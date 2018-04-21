@@ -35,7 +35,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1593749832569570}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.57, y: 0.44, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children: []
   m_Father: {fileID: 0}
@@ -52,21 +52,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac97c944fa84c640be8688996d808cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 3
+  state: 1
   allSprites:
-  - {fileID: 21300000, guid: b06c5ff7b69d0914cb5ecbd7a637e19f, type: 3}
-  - {fileID: 21300000, guid: cf75d14368009aa49b04e7afa333a862, type: 3}
-  - {fileID: 21300000, guid: a85b5e368b8c03a4bac64af437f7291e, type: 3}
-  - {fileID: 21300000, guid: 7904daed7b8ac5849bb10e7678761865, type: 3}
-  - {fileID: 21300000, guid: b2ff3e7ca7bd7eb49aad75a7575e4ac8, type: 3}
-  - {fileID: 21300000, guid: 42828e40ba49bee4099a939eb0ba7174, type: 3}
-  - {fileID: 21300000, guid: ad60506e326a6df49b7b3297a7824a78, type: 3}
-  - {fileID: 21300000, guid: 8d42b52c26d0df34b816a2e36446ad13, type: 3}
-  - {fileID: 21300000, guid: 57c6247c3d576c54c9c7755ba08676c9, type: 3}
-  - {fileID: 21300000, guid: cdf2030c36d915a408357bfd24803c5c, type: 3}
-  - {fileID: 21300000, guid: 1af3c57c3911ba84885bb844282e466b, type: 3}
-  - {fileID: 21300000, guid: a2c121ed03f7684459e9cf5faa2531c9, type: 3}
-  frameRate: 4
+  - {fileID: 21300000, guid: bb5ecc522b576ff4fbd45c5d18a2784e, type: 3}
+  - {fileID: 21300000, guid: 14d3342b464621248aefc743fd60cfa7, type: 3}
+  - {fileID: 21300000, guid: d12b9ca50c7d41c44868f40e1cff85b3, type: 3}
+  - {fileID: 21300000, guid: 18ba767662d98be45b6866fbea1dfd1b, type: 3}
+  - {fileID: 21300000, guid: 13a81abe38b30594d8812d1eb9d5d533, type: 3}
+  - {fileID: 21300000, guid: b4ed3238ade47b44fad57eb384ccfc93, type: 3}
+  - {fileID: 21300000, guid: 23ab9d8cf2964a44aa5bedc53dbe6c6c, type: 3}
+  - {fileID: 21300000, guid: 3a1bef6aebeeffc479b8740c67a22754, type: 3}
+  - {fileID: 21300000, guid: bea5d1f5047392e4795f527c68bb9637, type: 3}
+  - {fileID: 21300000, guid: 714a6fe4cbfb32545b17ba1881310e3a, type: 3}
+  - {fileID: 21300000, guid: d1e41223ba30dd64da49d91ae8f5d4c8, type: 3}
+  - {fileID: 21300000, guid: edba9ec949e932c489e25c4b2723465f, type: 3}
+  frameRate: 8
 --- !u!212 &212798149174285074
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -101,7 +101,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b06c5ff7b69d0914cb5ecbd7a637e19f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bb5ecc522b576ff4fbd45c5d18a2784e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
