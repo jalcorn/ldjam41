@@ -462,6 +462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad16f907a797a4ca3ba7f0ce88211cd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speed: 0.05
 --- !u!70 &1161380675
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -560,7 +561,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1583111818}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb67c0a6579487e44a880f9474cbbfbb, type: 3}
+  m_Script: {fileID: 11500000, guid: 650c4a158b65f4084924b08788582a3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   game: {fileID: 830606039}
