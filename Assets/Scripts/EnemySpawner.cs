@@ -6,6 +6,7 @@ public class EnemySpawner : MonoBehaviour {
 	public GameObject enemyPrefab;
 	public int delay;
 	public int repeatRate;
+	public Pathing pathing;
 
 	// Use this for initialization
 	void Start () {
@@ -15,5 +16,7 @@ public class EnemySpawner : MonoBehaviour {
 	public void Spawn() {
 		GameObject enemy = Instantiate(enemyPrefab, this.transform);
 		enemy.transform.position = this.transform.position;
+		EnemyMovement em = enemy.GetComponent<EnemyMovement>();
+		em.pathing = pathing;
 	}
 }
