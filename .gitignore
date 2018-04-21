@@ -6,10 +6,11 @@ Obj/
 UnityGenerated/
 Library/
 Assets/AssetStoreTools*
+*.meta
 
-# ===================================== #
-# Visual Studio / MonoDevelop generated #
-# ===================================== #
+# =============================================== #
+# Visual Studio / MonoDevelop generated / Consulo #
+# =============================================== #
 ExportedObj/
 *.svd
 *.userprefs
@@ -20,6 +21,7 @@ ExportedObj/
 *.user
 *.unityproj
 *.booproj
+*.consulo
 
 # ============ #
 # OS generated #
