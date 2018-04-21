@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,12 +9,11 @@ public class Pathing : MonoBehaviour {
 
 		Transform[] childrenTransforms = GetComponentsInChildren<Transform>();
 		foreach (Transform transform in childrenTransforms) {
-			positions.Enqueue(transform.position);
+			if ("Path".Equals(transform.tag)) {
+				positions.Enqueue(transform.position);
+			}
 		}
 		positions.Enqueue(finalLocation.transform.position);
-
-		// First component is the parent position so remove it
-		positions.Dequeue();
 
 		return positions;
 	}
