@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TowerAnimation : MonoBehaviour {
+public class TowerAnimation : MonoBehaviour
+{
 
     private SpriteRenderer sprite;
 
     public Sprite[] allSprites = new Sprite[3];
 
-    private float framerate;
+    public float framerate;
     public towerSpriteState state;
 
 
@@ -28,13 +29,14 @@ public class TowerAnimation : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if(state == towerSpriteState.off)
+
+        if (state == towerSpriteState.off)
         {
             sprite.sprite = allSprites[0];
         }
         else
         {
-            if ( Mathf.FloorToInt(Time.time*framerate) % 2 == 0)
+            if (Mathf.FloorToInt(Time.time * framerate) % 2 == 0)
             {
                 sprite.sprite = allSprites[1];
             }
@@ -44,5 +46,5 @@ public class TowerAnimation : MonoBehaviour {
             }
         }
     }
-    
+
 }

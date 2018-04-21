@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Tower : MonoBehaviour
 {
-
+    //Attacks
     public float delayToStart = 5.0f;
     public float secondsBetweenAttack = 1.0f;
     public int damagePerAttack = -1;
@@ -12,9 +12,17 @@ public class Tower : MonoBehaviour
     CircleCollider2D trigger;
 
 
+    //Powerlevel
+    public float powerLevel = 1;
+    float maxPowerLevel = 1;
+    float minPowerLevel = 0;
+    float powerLostPerSec = 1f / 15f;//15 seconds from 100% to 0%
+
+
     public TowerAnimation towerSprite;
     public TowerPulseAnimator fieldSprite;
-    
+    public BatteryAnimator batterySprite;
+
     List<Character> charactersInRange = new List<Character>();
 
     // Use this for initialization
@@ -33,14 +41,40 @@ public class Tower : MonoBehaviour
     {
 
     }
-    
+
+    private void FixedUpdate()
+    {
+        powerLevel -= Time.fixedDeltaTime * powerLostPerSec;
+
+
+        powerLevel = Mathf.Max(minPowerLevel, powerLevel);
+        powerLevel = Mathf.Min(maxPowerLevel, powerLevel);
+
+
+        batterySprite.powerLevel = powerLevel;
+        towerSprite.framerate = Mathf.FloorToInt(powerLevel * 4) + 3;
+
+        if (powerLevel > minPowerLevel)
+        {
+            towerSprite.state = TowerAnimation.towerSpriteState.on;
+        }
+        else
+        {
+            towerSprite.state = TowerAnimation.towerSpriteState.off;
+        }
+    }
+
     void Attack()
     {
-        fieldSprite.Attack();
-
-        foreach (Character character in charactersInRange)
+        if (powerLevel > minPowerLevel)
         {
-            character.AdjustHitpoints(damagePerAttack);
+
+            fieldSprite.Attack();
+
+            foreach (Character character in charactersInRange)
+            {
+                character.AdjustHitpoints(damagePerAttack);
+            }
         }
 
     }

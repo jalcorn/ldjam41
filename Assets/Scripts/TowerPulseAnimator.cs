@@ -20,11 +20,12 @@ public class TowerPulseAnimator : MonoBehaviour
 
     void FixedUpdate()
     {
-        sprite.color -= new Color(0, 0, 0, 1f / 20f);
+        sprite.color -= new Color(0, 0, 0, 1f / 40f);
     }
 
     public void Attack()
     {
         sprite.color = Color.white;
+        sprite.color -= new Color(0, 0, 0, .4f);
     }
 }
