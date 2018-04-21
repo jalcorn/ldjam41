@@ -10,4 +10,11 @@ public class EnemyMovement : MonoBehaviour {
 		position += velocity;
 		this.transform.position = position;
 	}
+
+	void OnCollisionEnter2D (Collision2D col) {
+		if (col.gameObject.tag == "Base") {
+			// TODO: lose life or lose the game
+			Destroy(this.gameObject);
+		}
+	}
 }
