@@ -7,7 +7,6 @@ public class StartGame : MonoBehaviour {
 	public GameObject menu;
 
 	void OnMouseDown(){
-		Debug.Log("Clicked Start!");
 		game.SetActive(true);
 		menu.SetActive(false);
 	}
