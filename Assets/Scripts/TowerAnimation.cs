@@ -4,29 +4,45 @@ using UnityEngine;
 
 public class TowerAnimation : MonoBehaviour {
 
-  new SpriteRenderer renderer;
+    private SpriteRenderer sprite;
 
-	// Use this for initialization
-	void Start () {
-    renderer = GetComponent<SpriteRenderer>();
-    Hide();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    public Sprite[] allSprites = new Sprite[3];
 
-  public void Play() {
-    Show();
-    Invoke("Hide", 0.15f);
-  }
+    private float framerate;
+    public towerSpriteState state;
 
-  void Show() {
-    renderer.enabled = true;
-  }
 
-  void Hide() {
-    renderer.enabled = false;
-  }
+    public enum towerSpriteState
+    {
+        on,
+        off
+    }
+
+    // Use this for initialization
+    void Start()
+    {
+        sprite = GetComponent<SpriteRenderer>();
+        framerate = 6f;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if(state == towerSpriteState.off)
+        {
+            sprite.sprite = allSprites[0];
+        }
+        else
+        {
+            if ( Mathf.FloorToInt(Time.time*framerate) % 2 == 0)
+            {
+                sprite.sprite = allSprites[1];
+            }
+            else
+            {
+                sprite.sprite = allSprites[2];
+            }
+        }
+    }
+    
 }
