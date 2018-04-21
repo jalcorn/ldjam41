@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
@@ -7,10 +5,23 @@ public class EnemySpawner : MonoBehaviour {
 	public int delay;
 	public int repeatRate;
 	public Pathing pathing;
+	public LevelManager levelManager;
 
-	// Use this for initialization
-	void Start () {
-		InvokeRepeating("Spawn", delay, repeatRate);
+	void Start() {
+		levelManager.levelState.OnStateChange += OnLevelStateChange;
+	}
+
+	private void OnLevelStateChange(LevelState.State prev, LevelState.State next) {
+		if (prev != next) {
+			switch(next) {
+				case LevelState.State.Playing:
+					InvokeRepeating("Spawn", delay, repeatRate);
+					break;
+				default:
+					CancelInvoke("Spawn");
+					break;
+			}
+		}
 	}
 
 	public void Spawn() {

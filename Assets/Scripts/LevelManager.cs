@@ -1,14 +1,16 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
-	[HideInInspector]
-	public Cooldown levelCooldown;
+	private Cooldown startingCooldown;
+	private Cooldown endingCooldown;
 
 	[HideInInspector]
 	public LevelState levelState;
 
-	void Start() {
-		levelCooldown = new Cooldown(2000);
+	void Awake() {
+		startingCooldown = new Cooldown(2000, false);
+		endingCooldown = new Cooldown(2000, false);
 		levelState = new LevelState();
 
 		levelState.OnStateChange += OnLevelStateChange;
@@ -18,10 +20,10 @@ public class LevelManager : MonoBehaviour {
 		if (prev != next) {
 			switch (next) {
 				case LevelState.State.Starting:
-					levelCooldown.Trigger();
+					startingCooldown.Trigger();
 					break;
 				case LevelState.State.Ending:
-					levelCooldown.Trigger();
+					endingCooldown.Trigger();
 					break;
 			}
 		}
@@ -33,12 +35,13 @@ public class LevelManager : MonoBehaviour {
 				levelState.SetCurrentState(LevelState.State.Starting);
 				break;
 			case LevelState.State.Starting:
-				if (levelCooldown.IsReady()) levelState.SetCurrentState(LevelState.State.Playing);
+				if (startingCooldown.IsReady()) levelState.SetCurrentState(LevelState.State.Playing);
 				break;
 			case LevelState.State.Ending:
-				if (levelCooldown.IsReady()) levelState.SetCurrentState(LevelState.State.Ended);
+				if (endingCooldown.IsReady()) levelState.SetCurrentState(LevelState.State.Ended);
 				break;
 			case LevelState.State.Ended:
+				SceneManager.LoadScene("main");
 				return;
 		}
 	}

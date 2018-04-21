@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class LevelState {
 	public enum State {
 		Created,
@@ -14,6 +16,7 @@ public class LevelState {
 	public State Cur = State.Created;
 
 	public void SetCurrentState(State state) {
+		Debug.Log("state: " + state);
 		var prev = Cur;
 		Cur = state;
 		if (OnStateChange != null)
