@@ -29,11 +29,4 @@ public class EnemyMovement : MonoBehaviour {
 			this.transform.position = Vector3.MoveTowards(position, targetPosition, step);
 		}
 	}
-
-	void OnCollisionEnter2D (Collision2D col) {
-		if (col.gameObject.tag == "Base") {
-			// TODO: lose life or lose the game
-			Destroy(this.gameObject);
-		}
-	}
 }
