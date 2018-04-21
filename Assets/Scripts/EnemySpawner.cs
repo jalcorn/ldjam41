@@ -16,7 +16,7 @@ public class EnemySpawner : MonoBehaviour {
 	public void Spawn() {
 		GameObject enemy = Instantiate(enemyPrefab, this.transform);
 		enemy.transform.position = this.transform.position;
-		EnemyMovement em = enemy.GetComponent<EnemyMovement>();
+		EnemyBehavior em = enemy.GetComponent<EnemyBehavior>();
 		em.pathing = pathing;
 	}
 }
