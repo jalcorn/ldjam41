@@ -1,17 +1,45 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour {
-	public List<GameObject> levels;
+	[HideInInspector]
+	public Cooldown levelCooldown;
 
-	// Use this for initialization
-	void Start () {
-		Instantiate(levels[0], this.transform);
+	[HideInInspector]
+	public LevelState levelState;
+
+	void Start() {
+		levelCooldown = new Cooldown(2000);
+		levelState = new LevelState();
+
+		levelState.OnStateChange += OnLevelStateChange;
 	}
 
-	// Update is called once per frame
-	void Update () {
+	private void OnLevelStateChange(LevelState.State prev, LevelState.State next) {
+		if (prev != next) {
+			switch (next) {
+				case LevelState.State.Starting:
+					levelCooldown.Trigger();
+					break;
+				case LevelState.State.Ending:
+					levelCooldown.Trigger();
+					break;
+			}
+		}
+	}
 
+	void Update() {
+		switch (levelState.Cur) {
+			case LevelState.State.Created:
+				levelState.SetCurrentState(LevelState.State.Starting);
+				break;
+			case LevelState.State.Starting:
+				if (levelCooldown.IsReady()) levelState.SetCurrentState(LevelState.State.Playing);
+				break;
+			case LevelState.State.Ending:
+				if (levelCooldown.IsReady()) levelState.SetCurrentState(LevelState.State.Ended);
+				break;
+			case LevelState.State.Ended:
+				return;
+		}
 	}
 }
