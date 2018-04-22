@@ -12,15 +12,17 @@ public class Tower : MonoBehaviour
 
 
     //Powerlevel
-    public float powerLevel = 1;
+    public float powerLevel = 0;
     float maxPowerLevel = 1;
     float minPowerLevel = 0;
     float powerLostPerSec = 1f / 15f;//15 seconds from 100% to 0%
+    float powerGainPerSec = 4f / 15f;
 
 
     public TowerAnimation towerSprite;
     public TowerPulseAnimator fieldSprite;
     public BatteryAnimator batterySprite;
+
 
     List<Character> charactersInRange = new List<Character>();
 
@@ -57,6 +59,7 @@ public class Tower : MonoBehaviour
         {
             towerSprite.state = TowerAnimation.towerSpriteState.off;
         }
+
     }
 
     void Attack()
@@ -67,11 +70,16 @@ public class Tower : MonoBehaviour
             fieldSprite.Attack();
 
 			foreach (Character character in charactersInRange) {
-				if(!character.IsPlayer()) {
+				if(character!=null && character.gameObject!= null && !character.IsPlayer()) {
 					character.AdjustHitpoints(damagePerAttack);
 				}
 			}
 		}
+    }
+
+    public void GetCharged()
+    {
+        powerLevel += Time.fixedDeltaTime * powerGainPerSec;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

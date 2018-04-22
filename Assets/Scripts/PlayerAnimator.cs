@@ -13,7 +13,10 @@ public class PlayerAnimator : MonoBehaviour
         standUp,
         standDown,
         standLeft,
-        standRight
+        standRight,
+        fixLeft,
+        fixRight,
+        death,
     }
 
     public playerMoveState state = playerMoveState.standDown;
@@ -22,7 +25,11 @@ public class PlayerAnimator : MonoBehaviour
     private playerMoveState previousState = playerMoveState.standDown;
     private SpriteRenderer spriteComp;
 
-    public Sprite[] allSprites = new Sprite[12];
+    public Sprite[] movementSprites = new Sprite[12];
+
+    public Sprite[] fixTowerSprites = new Sprite[2];
+
+    public Sprite deathSprite;
 
     private Sprite[] currentSprites = new Sprite[12];
     private int animationLength = 1;
@@ -67,41 +74,52 @@ public class PlayerAnimator : MonoBehaviour
         switch (state)
         {
             case playerMoveState.walkUp:
-                currentSprites[3] = allSprites[8];
-                currentSprites[0] = allSprites[9];
-                currentSprites[1] = allSprites[10];
-                currentSprites[2] = allSprites[11];
+                currentSprites[3] = movementSprites[8];
+                currentSprites[0] = movementSprites[9];
+                currentSprites[1] = movementSprites[10];
+                currentSprites[2] = movementSprites[11];
                 animationLength = 4;
                 break;
             case playerMoveState.walkDown:
-                currentSprites[3] = allSprites[0];
-                currentSprites[0] = allSprites[1];
-                currentSprites[1] = allSprites[2];
-                currentSprites[2] = allSprites[3];
+                currentSprites[3] = movementSprites[0];
+                currentSprites[0] = movementSprites[1];
+                currentSprites[1] = movementSprites[2];
+                currentSprites[2] = movementSprites[3];
                 animationLength = 4;
                 break;
             case playerMoveState.walkLeft:
             case playerMoveState.walkRight:
-                currentSprites[3] = allSprites[4];
-                currentSprites[0] = allSprites[5];
-                currentSprites[1] = allSprites[6];
-                currentSprites[2] = allSprites[7];
+                currentSprites[3] = movementSprites[4];
+                currentSprites[0] = movementSprites[5];
+                currentSprites[1] = movementSprites[6];
+                currentSprites[2] = movementSprites[7];
                 animationLength = 4;
                 flipX = state == playerMoveState.walkRight;
                 break;
             case playerMoveState.standUp:
-                currentSprites[0] = allSprites[8];
+                currentSprites[0] = movementSprites[8];
                 animationLength = 1;
                 break;
             case playerMoveState.standDown:
-                currentSprites[0] = allSprites[0];
+                currentSprites[0] = movementSprites[0];
                 animationLength = 1;
                 break;
             case playerMoveState.standLeft:
             case playerMoveState.standRight:
-                currentSprites[0] = allSprites[4];
+                currentSprites[0] = movementSprites[4];
                 animationLength = 1;
                 flipX = state == playerMoveState.standRight;
+                break;
+            case playerMoveState.fixLeft:
+            case playerMoveState.fixRight:
+                currentSprites[0] = fixTowerSprites[0];
+                currentSprites[1] = fixTowerSprites[1];
+                animationLength = 2;
+                flipX = state == playerMoveState.fixRight;
+                break;
+            case playerMoveState.death:
+                currentSprites[0] = deathSprite;
+                animationLength = 1;
                 break;
         }
     }

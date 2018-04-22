@@ -195,7 +195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 1
-  allSprites:
+  movementSprites:
   - {fileID: 21300000, guid: bb5ecc522b576ff4fbd45c5d18a2784e, type: 3}
   - {fileID: 21300000, guid: 14d3342b464621248aefc743fd60cfa7, type: 3}
   - {fileID: 21300000, guid: d12b9ca50c7d41c44868f40e1cff85b3, type: 3}
@@ -208,6 +208,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 714a6fe4cbfb32545b17ba1881310e3a, type: 3}
   - {fileID: 21300000, guid: d1e41223ba30dd64da49d91ae8f5d4c8, type: 3}
   - {fileID: 21300000, guid: edba9ec949e932c489e25c4b2723465f, type: 3}
+  fixTowerSprites:
+  - {fileID: 21300000, guid: 21f12bdc2932914478d1b36098640fc7, type: 3}
+  - {fileID: 21300000, guid: 5d4494c4828ca7c44a34f8831274d45e, type: 3}
+  deathSprite: {fileID: 21300000, guid: 6bb7f78a30f10f641b13cc0748aeffc1, type: 3}
   frameRate: 6
 --- !u!114 &114162226649528292
 MonoBehaviour:
