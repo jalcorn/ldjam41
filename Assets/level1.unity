@@ -1391,6 +1391,7 @@ GameObject:
   - component: {fileID: 1855110250}
   - component: {fileID: 1855110253}
   - component: {fileID: 1855110252}
+  - component: {fileID: 1855110251}
   m_Layer: 5
   m_Name: Waves
   m_TagString: Untagged
@@ -1416,6 +1417,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1855110251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1855110249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b62ca911fc9e40bcab871f9163ebc10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefix: 'Waves Left: '
+  enemySpawner: {fileID: 0}
 --- !u!114 &1855110252
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -48,6 +48,10 @@ public class EnemySpawner : MonoBehaviour {
 		}
 	}
 
+	public int RemainingWaves() {
+		return waves.Count - waveIndex;
+	}
+
 	private bool IsEnemyAlive() {
 		return GameObject.FindGameObjectsWithTag("Enemy").Length > 0;
 	}
