@@ -15,7 +15,7 @@ public class EnemyBehavior : MonoBehaviour {
   public float visionDistance = 2f;
   public GameObject visionObject;
   EnemyVision vision;
-  Player player = null;
+  public Player sightedPlayer = null;
 
 	void Start() {
     positions = pathing.GetPathPositions();
@@ -25,8 +25,8 @@ public class EnemyBehavior : MonoBehaviour {
 	}
 
 	void Update() {
-    if (player != null) {
-      MoveToPosition(player.transform.position);
+    if (sightedPlayer != null) {
+      MoveToPosition(sightedPlayer.transform.position);
     } else if (positions.Count > 0) {
       MoveToPosition(positions.Peek());
     }
@@ -49,6 +49,11 @@ public class EnemyBehavior : MonoBehaviour {
   }
 
   void playerSighted(Player player) {
-    this.player = player;
+    if (sightedPlayer == null) {
+      EnemyBehavior[] list = FindObjectsOfType<EnemyBehavior>();
+      foreach (EnemyBehavior enemy in list) {
+        enemy.sightedPlayer = player;
+      }
+    }
   }
 }
