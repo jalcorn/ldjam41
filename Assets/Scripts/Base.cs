@@ -6,7 +6,7 @@ public class Base : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D col) {
 		if (col.gameObject.tag == "Enemy") {
 			Destroy(col.gameObject);
-			levelManager.levelState.SetCurrentState(LevelState.State.Ending);
+      levelManager.EndLevel();
 		}
 	}
 }

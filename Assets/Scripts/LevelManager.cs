@@ -45,4 +45,8 @@ public class LevelManager : MonoBehaviour {
 				return;
 		}
 	}
+
+  public void EndLevel() {
+    levelState.SetCurrentState(LevelState.State.Ending);
+  }
 }
