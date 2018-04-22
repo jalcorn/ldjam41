@@ -36,7 +36,7 @@ public class FollowPathMovement {
     forwardVector = targetPosition - position;
   }
 
-  public Vector3 GetForwardVector() {
+  public virtual Vector3 GetForwardVector() {
     return forwardVector;
   }
 

@@ -913,26 +913,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f39714f198fa64dee9e3351c9ba365cb, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1168405889 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1914916891876082, guid: 541c65e7b61ef4e7da3ce4f17adfe2c9,
-    type: 2}
-  m_PrefabInternal: {fileID: 1424199795}
---- !u!58 &1168405892
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1168405889}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!1 &1180034981
 GameObject:
   m_ObjectHideFlags: 0
@@ -1362,7 +1342,7 @@ MonoBehaviour:
     type: 2}
   blueEnemyPrefab: {fileID: 1949648020836182, guid: a59908c907b9048c58afe37533aab502,
     type: 2}
-  yellowEnemyPrefab: {fileID: 1544460831589124, guid: b2cc106b46db04016b9a54bcd9fc0ff9,
+  yellowEnemyPrefab: {fileID: 1300893450147488, guid: 7872cf6138b614329ac7d78812cc69e8,
     type: 2}
   waves:
   - spawns:
