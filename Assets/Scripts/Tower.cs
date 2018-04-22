@@ -8,7 +8,6 @@ public class Tower : MonoBehaviour
     public float delayToStart = 5.0f;
     public float secondsBetweenAttack = 1.0f;
     public int damagePerAttack = -1;
-    public float damageRadius = 2f;
     CircleCollider2D trigger;
 
 
@@ -28,11 +27,7 @@ public class Tower : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        var rigidbody = gameObject.AddComponent<Rigidbody2D>();
-        rigidbody.gravityScale = 0f;
-        trigger = gameObject.AddComponent<CircleCollider2D>();
-        trigger.isTrigger = true;
-        trigger.radius = damageRadius;
+        trigger = gameObject.GetComponent<CircleCollider2D>();
         InvokeRepeating("Attack", delayToStart, secondsBetweenAttack);
     }
 
