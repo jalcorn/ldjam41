@@ -224,12 +224,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 1
   allSprites:
-  - {fileID: 21300000, guid: 611aa7661a9bcda43a4b1b35a617d78b, type: 3}
-  - {fileID: 21300000, guid: acddb024884709e46a9f1477ea619a30, type: 3}
-  - {fileID: 21300000, guid: dbdabe0ba71bab9478aa926cb6244120, type: 3}
-  - {fileID: 21300000, guid: 238e2719800ab1c4eb3beef94560e7e6, type: 3}
-  - {fileID: 21300000, guid: ce9460cb3b37d6f46b501fb9e05ad690, type: 3}
-  - {fileID: 21300000, guid: 30a6057db3d9b4b4b9b68459b25dc1b5, type: 3}
+  - {fileID: 21300000, guid: b30995928950a28429161a243e5cba36, type: 3}
+  - {fileID: 21300000, guid: 681b1bea34d23b24792ac36a8eba7d22, type: 3}
+  - {fileID: 21300000, guid: a3c523340468ed74ead28e39c650f10d, type: 3}
+  - {fileID: 21300000, guid: 9652fe035439aa34980f3a2f5e93d9ec, type: 3}
+  - {fileID: 21300000, guid: e778aab4846a7864e9a0cc63c559db4f, type: 3}
+  - {fileID: 21300000, guid: fb7ae1822c052274687f80f775a4c5b7, type: 3}
   frameRate: 6
 --- !u!114 &114961156075604862
 MonoBehaviour:
