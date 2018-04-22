@@ -130,7 +130,7 @@ Transform:
   m_GameObject: {fileID: 1544460831589124}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 4059451708051470}
   - {fileID: 4881681083643736}
@@ -288,6 +288,7 @@ MonoBehaviour:
   pathing: {fileID: 0}
   visionDistance: 2
   visionObject: {fileID: 1736335720372824}
+  sightedPlayer: {fileID: 0}
 --- !u!114 &114970242815992174
 MonoBehaviour:
   m_ObjectHideFlags: 1
