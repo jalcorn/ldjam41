@@ -1,9 +1,12 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
 	public int readyDurationMillis = 2000;
 	public int endingDurationMillis = 2000;
+
+	public String nextScene = "main";
 
 	private Cooldown startingCooldown;
 	private Cooldown endingCooldown;
@@ -48,7 +51,7 @@ public class LevelManager : MonoBehaviour {
 				if (endingCooldown.IsReady()) levelState.SetCurrentState(LevelState.State.Ended);
 				break;
 			case LevelState.State.Ended:
-				SceneManager.LoadScene("main");
+				SceneManager.LoadScene(nextScene);
 				return;
 		}
 	}

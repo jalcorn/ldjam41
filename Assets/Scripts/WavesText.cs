@@ -1,11 +1,11 @@
-using UnityEngine;
 using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Text))]
 public class WavesText : MonoBehaviour {
 	public String prefix;
-	
+
 	private EnemySpawner enemySpawner;
 
 	void Start() {
