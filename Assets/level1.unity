@@ -687,15 +687,6 @@ Prefab:
       propertyPath: m_Name
       value: PulseTowerRight
       objectReference: {fileID: 0}
-    - target: {fileID: 1914916891876082, guid: 541c65e7b61ef4e7da3ce4f17adfe2c9, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114952062406734322, guid: 541c65e7b61ef4e7da3ce4f17adfe2c9,
-        type: 2}
-      propertyPath: secondsBetweenAttack
-      value: 0.1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 541c65e7b61ef4e7da3ce4f17adfe2c9, type: 2}
   m_IsPrefabParent: 0
@@ -1139,7 +1130,7 @@ Prefab:
     - target: {fileID: 114952062406734322, guid: 541c65e7b61ef4e7da3ce4f17adfe2c9,
         type: 2}
       propertyPath: secondsBetweenAttack
-      value: 0.1
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 541c65e7b61ef4e7da3ce4f17adfe2c9, type: 2}
