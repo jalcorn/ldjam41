@@ -1,17 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class HealthbarFill : MonoBehaviour {
-    
-    private float healthPercent = 1f;
+	private Character character;
 
-	// Use this for initialization
-	void Start () {
+	void Start() {
+		character = FindObjectOfType<Character>();
+
+		character.OnHealthChange += OnHealthChange;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-        this.gameObject.transform.localScale = new Vector3(healthPercent,1,1);
-    }
+
+	private void OnHealthChange(int prev, int next) {
+		float healthPercent = (float) next / character.maxHealth;
+		this.gameObject.transform.localScale = new Vector3(healthPercent, 1, 1);
+	}
 }

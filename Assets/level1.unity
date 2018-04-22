@@ -691,6 +691,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114952062406734322, guid: 541c65e7b61ef4e7da3ce4f17adfe2c9,
+        type: 2}
+      propertyPath: secondsBetweenAttack
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 541c65e7b61ef4e7da3ce4f17adfe2c9, type: 2}
   m_IsPrefabParent: 0
@@ -710,7 +715,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6278ca81e286c4b7789f1127aa18ec53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitPoints: 3
+  maxHealth: 3
 --- !u!1 &853778196 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1721753954632536, guid: 019013d12b78d4a9183bd416624ec6b2,
@@ -1130,6 +1135,11 @@ Prefab:
     - target: {fileID: 1914916891876082, guid: 541c65e7b61ef4e7da3ce4f17adfe2c9, type: 2}
       propertyPath: m_Name
       value: PulseTowerLeft
+      objectReference: {fileID: 0}
+    - target: {fileID: 114952062406734322, guid: 541c65e7b61ef4e7da3ce4f17adfe2c9,
+        type: 2}
+      propertyPath: secondsBetweenAttack
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 541c65e7b61ef4e7da3ce4f17adfe2c9, type: 2}

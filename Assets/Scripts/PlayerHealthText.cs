@@ -1,5 +1,5 @@
-using UnityEngine;
 using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Text))]
@@ -10,10 +10,12 @@ public class PlayerHealthText : MonoBehaviour {
 
 	void Start() {
 		character = FindObjectOfType<Character>();
+
+		character.OnHealthChange += OnHealthChange;
 	}
 
-	void Update() {
+	private void OnHealthChange(int prev, int next) {
 		Text text = this.GetComponent<Text>();
-		text.text = prefix + character.hitPoints;
+		text.text = prefix + next;
 	}
 }
