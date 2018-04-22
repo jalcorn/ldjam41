@@ -40,7 +40,7 @@ public class FollowPathMovement {
     return forwardVector;
   }
 
-  public void SetHighPriorityTarget(Transform target) {
+  public virtual void SetHighPriorityTarget(Transform target) {
     overriddenTarget = target;
   }
 }

@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class LookAroundMovement : FollowPathMovement {
 
-  private const float MAX_TURN_DEGREE = 45f;
-	private const float SPEED = 5f;
+	private const float MAX_TURN_DEGREES = 50f;
+
+	//degrees per second
+	private const float SPEED = 50f;
   
   public LookAroundMovement(GameObject gameObject, float speed, Queue<Vector2> path) : base(gameObject, speed, path) {}
 
@@ -14,17 +16,23 @@ public class LookAroundMovement : FollowPathMovement {
 
   public override void Move() {
     base.Move();
-		if (Mathf.Abs(currentAngle) >= MAX_TURN_DEGREE) {
-			direction = (TurningDirection)((int)direction * -1);
-      Debug.LogWarning("Turning " + direction);
+		if (currentAngle >= MAX_TURN_DEGREES) {
+			direction = TurningDirection.right;
+		} else if (currentAngle <= -MAX_TURN_DEGREES) {
+			direction = TurningDirection.left;
 		}
 		currentAngle += Time.deltaTime * SPEED * (float) direction;
-    Debug.LogWarning("Angle " + currentAngle + " - deltaTime " + Time.deltaTime + " - step " + Time.deltaTime * SPEED + " - direction " + direction);
   }
 
   public override Vector3 GetForwardVector() {
-		return base.GetForwardVector() + new Vector3(Mathf.Cos(currentAngle), Mathf.Sin(currentAngle));
-  }
+		return Quaternion.Euler(0, 0, currentAngle) * base.GetForwardVector();
+	}
+
+	public override void SetHighPriorityTarget(Transform target) {
+		base.SetHighPriorityTarget(target);
+		direction = TurningDirection.pause;
+		currentAngle = 0;
+	}
 
   private enum TurningDirection {
     left = 1,
