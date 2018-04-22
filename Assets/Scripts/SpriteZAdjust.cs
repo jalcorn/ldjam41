@@ -16,7 +16,7 @@ public class SpriteZAdjust : MonoBehaviour {
         Vector3 myPos = transform.position;
         Vector3 targetPos = target.transform.position;
 
-        targetPos.z = myPos.y;
+        targetPos.z = myPos.y * .001f;
 
         target.transform.position = targetPos;
 	}
