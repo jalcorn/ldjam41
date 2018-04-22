@@ -1308,10 +1308,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyPrefab: {fileID: 1544460831589124, guid: b2cc106b46db04016b9a54bcd9fc0ff9,
     type: 2}
-  delay: 1
-  repeatRate: 5
   pathing: {fileID: 1793683276}
   levelManager: {fileID: 1831081018}
+  waves:
+  - spawns:
+    - delay: 0
+      type: 2
+    - delay: 4000
+      type: 0
+    - delay: 2000
+      type: 1
+  - spawns:
+    - delay: 1000
+      type: 2
 --- !u!212 &2141962512
 SpriteRenderer:
   m_ObjectHideFlags: 0
