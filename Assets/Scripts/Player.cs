@@ -16,6 +16,8 @@ public class Player : MonoBehaviour {
 	private void Start() {
 		levelManager = FindObjectOfType<LevelManager>();
 		character = FindObjectOfType<Character>();
+
+		character.OnHealthChange += OnHealthChange;
 	}
 
 	void Update() {
@@ -140,5 +142,11 @@ public class Player : MonoBehaviour {
 			closestTower = null;
 		}
 		canCharge = false;
+	}
+
+	private void OnHealthChange(int prev, int next) {
+		if (next <= 0 && levelManager.levelState.Cur == LevelState.State.Playing) {
+			levelManager.EndLevel(false);
+		}
 	}
 }

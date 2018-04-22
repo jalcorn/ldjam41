@@ -3,29 +3,13 @@
 public class Character : MonoBehaviour {
 	public int hitPoints = 1;
 
-	void Update() {
-		if (hitPoints <= 0) {
-			if (IsPlayer()) {
-				LevelManager levelManager = FindObjectOfType<LevelManager>();
-				if (levelManager.levelState.Cur == LevelState.State.Playing) {
-					levelManager.EndLevel(false);
-				}
-			} else {
-				Die();
-			}
-		}
-	}
+	public delegate void HealthChange(int prev, int next);
 
-	public bool IsPlayer() {
-		return this.gameObject.tag == "Player";
-	}
+	public event HealthChange OnHealthChange;
 
 	public void AdjustHitpoints(int damage) {
+		int prevHealth = hitPoints;
 		hitPoints += damage;
-		gameObject.SendMessage("HitpointsChanged", SendMessageOptions.DontRequireReceiver);
-	}
-
-	public void Die() {
-		Destroy(gameObject);
+		OnHealthChange.Invoke(prevHealth, hitPoints);
 	}
 }
