@@ -300,6 +300,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d896f73379b1840be87235d8da29abb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  neutralColor: {r: 0.3633218, g: 0.78544325, b: 0.8235294, a: 0.78431374}
+  targetedColor: {r: 1, g: 0.52205884, b: 0.52205884, a: 0.78431374}
+  indicator: {fileID: 212736888553729850}
 --- !u!212 &212736888553729850
 SpriteRenderer:
   m_ObjectHideFlags: 1
