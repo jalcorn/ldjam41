@@ -2,16 +2,23 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour {
+	public int readyDurationMillis = 2000;
+	public int endingDurationMillis = 2000;
+
 	private Cooldown startingCooldown;
 	private Cooldown endingCooldown;
 
 	[HideInInspector]
 	public LevelState levelState;
 
+	[HideInInspector]
+	public LevelResult levelResult;
+
 	void Awake() {
-		startingCooldown = new Cooldown(2000, false);
-		endingCooldown = new Cooldown(2000, false);
+		startingCooldown = new Cooldown(readyDurationMillis, false);
+		endingCooldown = new Cooldown(endingDurationMillis, false);
 		levelState = new LevelState();
+		levelResult = new LevelResult();
 
 		levelState.OnStateChange += OnLevelStateChange;
 	}
@@ -46,7 +53,8 @@ public class LevelManager : MonoBehaviour {
 		}
 	}
 
-  public void EndLevel() {
-    levelState.SetCurrentState(LevelState.State.Ending);
-  }
+	public void EndLevel(bool victory = false) {
+		levelState.SetCurrentState(LevelState.State.Ending);
+		levelResult.SetCurrentResult(victory ? LevelResult.Result.Win : LevelResult.Result.Lose);
+	}
 }

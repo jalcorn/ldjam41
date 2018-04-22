@@ -43,7 +43,7 @@ public class EnemySpawner : MonoBehaviour {
 				}
 			} else if (!IsEnemyAlive()) {
 				Debug.Log("Level Complete");
-				levelManager.EndLevel();
+				levelManager.EndLevel(true);
 			}
 		}
 	}
