@@ -6,6 +6,9 @@ public class TowerPulseAnimator : MonoBehaviour
 {
     private SpriteRenderer sprite;
 
+    private float frameRate = 6f;
+    private bool isOn = false;
+
     // Use this for initialization
     void Start()
     {
@@ -20,12 +23,20 @@ public class TowerPulseAnimator : MonoBehaviour
 
     void FixedUpdate()
     {
-        sprite.color -= new Color(0, 0, 0, 1f / 40f);
+        sprite.color = Color.white;
+        if (!isOn) {
+            sprite.enabled = false;
+        } else {
+            sprite.enabled = true;
+            if (Time.time * frameRate % 2 < 1) {
+                sprite.color -= new Color(0, 0, 0, .4f);
+            } else {
+                sprite.color -= new Color(0, 0, 0, .6f);
+            }
+        }
     }
 
-    public void Attack()
-    {
-        sprite.color = Color.white;
-        sprite.color -= new Color(0, 0, 0, .4f);
+    public void TurnOn(bool on) {
+        isOn = on;
     }
 }

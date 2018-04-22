@@ -6,7 +6,7 @@ public class Tower : MonoBehaviour
 {
     //Attacks
     public float delayToStart = 5.0f;
-    public float secondsBetweenAttack = 1.0f;
+    public float secondsBetweenAttack = 0.1f;
     public int damagePerAttack = -1;
     CircleCollider2D trigger;
 
@@ -54,10 +54,12 @@ public class Tower : MonoBehaviour
         if (powerLevel > minPowerLevel)
         {
             towerSprite.state = TowerAnimation.towerSpriteState.on;
+            fieldSprite.TurnOn(true);
         }
         else
         {
             towerSprite.state = TowerAnimation.towerSpriteState.off;
+            fieldSprite.TurnOn(false);
         }
 
     }
@@ -66,15 +68,13 @@ public class Tower : MonoBehaviour
     {
         if (powerLevel > minPowerLevel)
         {
-
-            fieldSprite.Attack();
-
 			foreach (Character character in charactersInRange) {
 				if(character!=null && character.gameObject!= null && !character.IsPlayer()) {
 					character.AdjustHitpoints(damagePerAttack);
 				}
 			}
 		}
+
     }
 
     public void GetCharged()
