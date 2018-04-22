@@ -46,10 +46,6 @@ public class EnemyBehavior : MonoBehaviour {
   void playerSighted(Player player) {
     if (sightedPlayer == null) {
       movementLogic.SetHighPriorityTarget(player.transform);
-      EnemyBehavior[] list = FindObjectsOfType<EnemyBehavior>();
-      foreach (EnemyBehavior enemy in list) {
-        enemy.sightedPlayer = player;
-      }
     }
   }
 
