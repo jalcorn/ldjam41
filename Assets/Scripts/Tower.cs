@@ -66,12 +66,12 @@ public class Tower : MonoBehaviour
 
             fieldSprite.Attack();
 
-            foreach (Character character in charactersInRange)
-            {
-                character.AdjustHitpoints(damagePerAttack);
-            }
-        }
-
+			foreach (Character character in charactersInRange) {
+				if(!character.IsPlayer()) {
+					character.AdjustHitpoints(damagePerAttack);
+				}
+			}
+		}
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

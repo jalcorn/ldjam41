@@ -3,13 +3,16 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 	public float speed;
 	public PlayerAnimator playerAnimator;
-  LevelManager levelManager;
 
-  private PlayerAnimator.playerMoveState lastInputState = PlayerAnimator.playerMoveState.standDown;
+	private LevelManager levelManager;
+	private Character character;
 
-  private void Start() {
-    levelManager = FindObjectOfType<LevelManager>();
-  }
+	private PlayerAnimator.playerMoveState lastInputState = PlayerAnimator.playerMoveState.standDown;
+
+	private void Start() {
+		levelManager = FindObjectOfType<LevelManager>();
+		character = FindObjectOfType<Character>();
+	}
 
 	void Update() {
 		// Save last pressed key to prioritize the last pressed key
@@ -91,10 +94,11 @@ public class Player : MonoBehaviour {
 		return Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D);
 	}
 
-  private void OnCollisionEnter2D(Collision2D collision) {
-    if (collision.gameObject.tag == "Enemy") {
-      //Player died
-      levelManager.EndLevel();
-    }
-  }
+	private void OnCollisionEnter2D(Collision2D collision) {
+		if (collision.gameObject.tag == "Enemy") {
+			Destroy(collision.gameObject);
+
+			character.AdjustHitpoints(-1);
+		}
+	}
 }

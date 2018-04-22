@@ -1,29 +1,31 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Character : MonoBehaviour {
+	public int hitPoints = 1;
 
-  public int hitPoints = 1;
-
-	// Use this for initialization
-	void Start () {
-		
+	void Update() {
+		if (hitPoints <= 0) {
+			if (IsPlayer()) {
+				LevelManager levelManager = FindObjectOfType<LevelManager>();
+				if (levelManager.levelState.Cur == LevelState.State.Playing) {
+					levelManager.EndLevel(false);
+				}
+			} else {
+				Die();
+			}
+		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-    if (hitPoints <= 0) {
-      Die();
-    }
+
+	public bool IsPlayer() {
+		return this.gameObject.tag == "Player";
 	}
 
-  public void AdjustHitpoints (int damage) {
-    hitPoints += damage;
-    gameObject.SendMessage("HitpointsChanged", SendMessageOptions.DontRequireReceiver);
-  }
+	public void AdjustHitpoints(int damage) {
+		hitPoints += damage;
+		gameObject.SendMessage("HitpointsChanged", SendMessageOptions.DontRequireReceiver);
+	}
 
-  public void Die() {
-    Destroy(gameObject);
-  }
+	public void Die() {
+		Destroy(gameObject);
+	}
 }
