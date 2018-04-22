@@ -8,6 +8,7 @@ public class EnemyBehavior : MonoBehaviour {
 
   public float speed;
   public Pathing pathing;
+  public MovementType movementType;
 
   public float visionDistance = 2f;
   public GameObject visionObject;
@@ -19,7 +20,14 @@ public class EnemyBehavior : MonoBehaviour {
     visionObject.transform.localScale = new Vector3(visionDistance, visionDistance);
     vision = visionObject.GetComponent<EnemyVision>();
     vision.watchForPlayer(playerSighted);
-    movementLogic = new FollowPathMovement(gameObject, speed, pathing.GetPathPositions());
+    switch (movementType) {
+      case MovementType.LookAroundPath:
+        movementLogic = new LookAroundMovement(gameObject, speed, pathing.GetPathPositions());
+        break;
+      case MovementType.SimplePath:
+        movementLogic = new FollowPathMovement(gameObject, speed, pathing.GetPathPositions());
+        break;
+    }
   }
 
   void Update() {
@@ -38,5 +46,10 @@ public class EnemyBehavior : MonoBehaviour {
         enemy.sightedPlayer = player;
       }
     }
+  }
+
+  public enum MovementType {
+    SimplePath,
+    LookAroundPath
   }
 }
