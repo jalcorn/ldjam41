@@ -9,9 +9,9 @@ public class Player : MonoBehaviour {
 
 	private PlayerAnimator.playerMoveState lastInputState = PlayerAnimator.playerMoveState.standDown;
 
-    private Tower closestTower;
-    private bool canCharge = false;
-    private bool isCharging = false;
+	private Tower closestTower;
+	private bool canCharge = false;
+	private bool isCharging = false;
 
 	private void Start() {
 		levelManager = FindObjectOfType<LevelManager>();
@@ -19,101 +19,66 @@ public class Player : MonoBehaviour {
 	}
 
 	void Update() {
+		if (canCharge && Input.GetKey(KeyCode.Space)) {
+			if ( closestTower.transform.position.x < this.transform.position.x) {
+				lastInputState = PlayerAnimator.playerMoveState.fixLeft;
+				playerAnimator.state = PlayerAnimator.playerMoveState.fixLeft;
+			} else {
+				lastInputState = PlayerAnimator.playerMoveState.fixRight;
+				playerAnimator.state = PlayerAnimator.playerMoveState.fixRight;
+			}
+			isCharging = true;
+		} else {
+			if (isCharging) {
+				lastInputState = PlayerAnimator.playerMoveState.standDown;
+				playerAnimator.state = PlayerAnimator.playerMoveState.standDown;
+			}
 
-        if (canCharge && Input.GetKey(KeyCode.Space))
-        {
-            if( closestTower.transform.position.x < this.transform.position.x)
-            {
-                lastInputState = PlayerAnimator.playerMoveState.fixLeft;
-                playerAnimator.state = PlayerAnimator.playerMoveState.fixLeft;
-            }
-            else
-            {
-                lastInputState = PlayerAnimator.playerMoveState.fixRight;
-                playerAnimator.state = PlayerAnimator.playerMoveState.fixRight;
-            }
-            isCharging = true;
-        }
-        else
-        {
-            if (isCharging)
-            {
-                lastInputState = PlayerAnimator.playerMoveState.standDown;
-                playerAnimator.state = PlayerAnimator.playerMoveState.standDown;
-            }
+			isCharging = false;
+			// Save last pressed key to prioritize the last pressed key
+			if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) {
+				lastInputState = PlayerAnimator.playerMoveState.walkUp;
+			} else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) {
+				lastInputState = PlayerAnimator.playerMoveState.walkDown;
+			} else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A)) {
+				lastInputState = PlayerAnimator.playerMoveState.walkLeft;
+			} else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D)) {
+				lastInputState = PlayerAnimator.playerMoveState.walkRight;
+			}
 
-            isCharging = false;
-            // Save last pressed key to prioritize the last pressed key
-            if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
-            {
-                lastInputState = PlayerAnimator.playerMoveState.walkUp;
-            }
-            else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S))
-            {
-                lastInputState = PlayerAnimator.playerMoveState.walkDown;
-            }
-            else if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.A))
-            {
-                lastInputState = PlayerAnimator.playerMoveState.walkLeft;
-            }
-            else if (Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.D))
-            {
-                lastInputState = PlayerAnimator.playerMoveState.walkRight;
-            }
+			if (lastInputState == PlayerAnimator.playerMoveState.walkUp && isUpPressed()) {
+				moveUp();
+			} else if (lastInputState == PlayerAnimator.playerMoveState.walkDown && isDownPressed()) {
+				moveDown();
+			} else if (lastInputState == PlayerAnimator.playerMoveState.walkLeft && isLeftPressed()) {
+				moveLeft();
+			} else if (lastInputState == PlayerAnimator.playerMoveState.walkRight && isRightPressed()) {
+				moveRight();
+			} else if (isUpPressed()) {
+				moveUp();
+			} else if (isDownPressed()) {
+				moveDown();
+			} else if (isLeftPressed()) {
+				moveLeft();
+			} else if (isRightPressed()) {
+				moveRight();
+			} else {
+				if (playerAnimator.state < PlayerAnimator.playerMoveState.standUp) {
+					//Didn't move but is in walking animation
+					playerAnimator.state += 4;//Move to "standing" animation
+				}
+			}
 
-            if (lastInputState == PlayerAnimator.playerMoveState.walkUp && isUpPressed())
-            {
-                moveUp();
-            }
-            else if (lastInputState == PlayerAnimator.playerMoveState.walkDown && isDownPressed())
-            {
-                moveDown();
-            }
-            else if (lastInputState == PlayerAnimator.playerMoveState.walkLeft && isLeftPressed())
-            {
-                moveLeft();
-            }
-            else if (lastInputState == PlayerAnimator.playerMoveState.walkRight && isRightPressed())
-            {
-                moveRight();
-            }
-            else if (isUpPressed())
-            {
-                moveUp();
-            }
-            else if (isDownPressed())
-            {
-                moveDown();
-            }
-            else if (isLeftPressed())
-            {
-                moveLeft();
-            }
-            else if (isRightPressed())
-            {
-                moveRight();
-            }
-            else
-            {
-                if (playerAnimator.state < PlayerAnimator.playerMoveState.standUp)
-                {
-                    //Didn't move but is in walking animation
-                    playerAnimator.state += 4;//Move to "standing" animation
-                }
-            }
-
-        }
+		}
 	}
 
-    private void FixedUpdate()
-    {
-        if (isCharging && closestTower != null )
-        {
-            closestTower.GetCharged();
-        }
-    }
+	private void FixedUpdate() {
+		if (isCharging && closestTower != null) {
+			closestTower.GetCharged();
+		}
+	}
 
-    private void moveUp() {
+	private void moveUp() {
 		Vector3 position = this.transform.position;
 		position.y += speed;
 		playerAnimator.state = PlayerAnimator.playerMoveState.walkUp;
@@ -165,19 +130,15 @@ public class Player : MonoBehaviour {
 		}
 	}
 
-    public void setClosestTower( Tower t )
-    {
-        closestTower = t;
-        canCharge = true;
-    }
+	public void setClosestTower(Tower t) {
+		closestTower = t;
+		canCharge = true;
+	}
 
-    public void eraseClosestTower( Tower t )
-    {
-        if(closestTower == t)
-        {
-            closestTower = null;
-        }
-        canCharge = false;
-    }
-
+	public void eraseClosestTower(Tower t) {
+		if (closestTower == t) {
+			closestTower = null;
+		}
+		canCharge = false;
+	}
 }
