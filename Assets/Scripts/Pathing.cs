@@ -4,13 +4,13 @@ using UnityEngine;
 public class Pathing : MonoBehaviour {
 	public GameObject finalLocation;
 
-	public Queue<Vector3> GetPathPositions() {
-		Queue<Vector3> positions = new Queue<Vector3>();
+	public Queue<Vector2> GetPathPositions() {
+		Queue<Vector2> positions = new Queue<Vector2>();
 
 		Transform[] childrenTransforms = GetComponentsInChildren<Transform>();
-		foreach (Transform transform in childrenTransforms) {
-			if ("Path".Equals(transform.tag)) {
-				positions.Enqueue(transform.position);
+		foreach (Transform childTransform in childrenTransforms) {
+      if ("Path".Equals(childTransform.tag)) {
+        positions.Enqueue(childTransform.position);
 			}
 		}
 		positions.Enqueue(finalLocation.transform.position);
