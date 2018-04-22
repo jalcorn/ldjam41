@@ -2,18 +2,36 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
-	public GameObject enemyPrefab;
-	public Pathing pathing;
-	public LevelManager levelManager;
+	public GameObject redEnemyPrefab;
+	public GameObject blueEnemyPrefab;
+	public GameObject yellowEnemyPrefab;
 	public List<Wave> waves;
 
+	private LevelManager levelManager;
+	private Pathing pathing;
 	private Cooldown spawnCooldown;
 	private int waveIndex = 0;
 	private int spawnIndex = 0;
 
+	void Start() {
+		levelManager = FindObjectOfType<LevelManager>();
+		pathing = FindObjectOfType<Pathing>();
+	}
+
 	public void Spawn(EnemyType type) {
-		// TODO: spawn enemy based on type
-		Debug.Log("Spawn");
+		GameObject enemyPrefab;
+		switch (type) {
+			case EnemyType.Yellow:
+				enemyPrefab = yellowEnemyPrefab;
+				break;
+			case EnemyType.Blue:
+				enemyPrefab = blueEnemyPrefab;
+				break;
+			case EnemyType.Red:
+			default:
+				enemyPrefab = redEnemyPrefab;
+				break;
+		}
 		GameObject enemy = Instantiate(enemyPrefab, this.transform);
 		enemy.transform.position = this.transform.position;
 		EnemyBehavior em = enemy.GetComponent<EnemyBehavior>();

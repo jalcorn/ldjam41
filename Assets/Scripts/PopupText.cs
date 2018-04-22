@@ -3,9 +3,12 @@ using UnityEngine;
 public class PopupText : MonoBehaviour {
 	public LevelState.State state;
 	public LevelResult.Result result;
-	public LevelManager levelManager;
+
+	private LevelManager levelManager;
 
 	void Start() {
+		levelManager = FindObjectOfType<LevelManager>();
+
 		levelManager.levelState.OnStateChange += OnLevelStateChange;
 		levelManager.levelResult.OnResultChange += OnResultStateChange;
 

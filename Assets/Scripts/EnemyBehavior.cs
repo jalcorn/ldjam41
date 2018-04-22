@@ -5,18 +5,23 @@ using System.Collections;
 using UnityEditor;
 
 public class EnemyBehavior : MonoBehaviour {
-
   public float speed;
-  public Pathing pathing;
   public MovementType movementType;
+	public float visionDistance = 2f;
+	public GameObject visionObject;
 
-  public float visionDistance = 2f;
-  public GameObject visionObject;
-  EnemyVision vision;
-  public Player sightedPlayer = null;
-  FollowPathMovement movementLogic;
+	[HideInInspector]
+	public Player sightedPlayer = null;
 
-  void Start() {
+	[HideInInspector]
+	public Pathing pathing;
+
+	private EnemyVision vision;
+	private FollowPathMovement movementLogic;
+
+	void Start() {
+	  pathing = FindObjectOfType<Pathing>();
+
     visionObject.transform.localScale = new Vector3(visionDistance, visionDistance);
     vision = visionObject.GetComponent<EnemyVision>();
     vision.watchForPlayer(playerSighted);

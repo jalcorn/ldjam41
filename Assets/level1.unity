@@ -1358,10 +1358,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa9870bd790a04b13a152070426e33d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 1544460831589124, guid: b2cc106b46db04016b9a54bcd9fc0ff9,
+  redEnemyPrefab: {fileID: 1544460831589124, guid: b2cc106b46db04016b9a54bcd9fc0ff9,
     type: 2}
-  pathing: {fileID: 1793683276}
-  levelManager: {fileID: 1831081018}
+  blueEnemyPrefab: {fileID: 1949648020836182, guid: a59908c907b9048c58afe37533aab502,
+    type: 2}
+  yellowEnemyPrefab: {fileID: 1544460831589124, guid: b2cc106b46db04016b9a54bcd9fc0ff9,
+    type: 2}
   waves:
   - spawns:
     - delay: 0
