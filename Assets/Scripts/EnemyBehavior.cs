@@ -25,9 +25,7 @@ public class EnemyBehavior : MonoBehaviour {
 	}
 
 	void Update() {
-    Debug.Log("Positions.Count - " + positions.Count);
     if (player != null) {
-      Debug.LogWarning("I see you cat bitch!");
       MoveToPosition(player.transform.position);
     } else if (positions.Count > 0) {
       MoveToPosition(positions.Peek());
