@@ -8,10 +8,14 @@ public class PlayerHealth : MonoBehaviour {
     public PlayerHealthText text;
     private LevelManager levelManager;
 
+	private Cooldown invincibilityCooldown;
+
     void Start() {
         health = maxHealth;
         text = FindObjectOfType<PlayerHealthText>();
         levelManager = FindObjectOfType<LevelManager>();
+
+		invincibilityCooldown = new Cooldown(200, true);
     }
 
     public void AdjustHitpoints(int delta) {
@@ -26,9 +30,10 @@ public class PlayerHealth : MonoBehaviour {
         return health;
     }
     private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.tag == "Enemy") {
-            Destroy(collision.gameObject);
-
+        if (collision.gameObject.tag == "Enemy" && invincibilityCooldown.IsReady()) {
+			invincibilityCooldown.Trigger();
+            EnemyHealth eh = collision.gameObject.GetComponent<EnemyHealth>();
+            eh.AdjustHitpoints(-9999);
             AdjustHitpoints(-1);
         }
     }
