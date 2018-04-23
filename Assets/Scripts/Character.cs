@@ -13,9 +13,13 @@ public class Character : MonoBehaviour {
 		hitPoints = maxHealth;
 	}
 
-	public void AdjustHitpoints(int damage) {
+	public void AdjustHitpoints(int delta) {
+		if (hitPoints <= 0) {
+			return;
+		}
+
 		int prevHealth = hitPoints;
-		hitPoints += damage;
+		hitPoints += delta;
 		OnHealthChange.Invoke(prevHealth, hitPoints);
 	}
 }
