@@ -19,8 +19,11 @@ public abstract class Tower : MonoBehaviour {
 
 	internal List<EnemyHealth> charactersInRange = new List<EnemyHealth>();
 
-	// Use this for initialization
+	private bool shouldSoundOnChanged = false;
+	private AudioSource audioSource;
+
 	void Start() {
+		audioSource = GetComponent<AudioSource>();
 		trigger = gameObject.GetComponent<CircleCollider2D>();
 		InvokeRepeating("TryAttack", delayToStart, secondsBetweenAttack);
 	}
@@ -38,6 +41,10 @@ public abstract class Tower : MonoBehaviour {
 			PowerOn();
 		} else {
 			PowerOff();
+		}
+
+		if (powerLevel < 0.9f * maxPowerLevel) {
+			shouldSoundOnChanged = true;
 		}
 	}
 
@@ -71,6 +78,11 @@ public abstract class Tower : MonoBehaviour {
 
 	public void GetCharged() {
 		powerLevel += Time.fixedDeltaTime * powerGainPerSec;
+		if (shouldSoundOnChanged && powerLevel >= maxPowerLevel * 0.98f) {
+			shouldSoundOnChanged = false;
+			audioSource.volume = Random.Range(0.5f, 1f);
+			audioSource.Play();
+		}
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision) {
