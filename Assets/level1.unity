@@ -378,7 +378,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4669801672520822, guid: 85b45583f25624c4bb2fecb2560bb4e5, type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4669801672520822, guid: 85b45583f25624c4bb2fecb2560bb4e5, type: 2}
       propertyPath: m_LocalScale.x
@@ -909,6 +909,46 @@ Prefab:
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114952523460486672, guid: f39714f198fa64dee9e3351c9ba365cb,
+        type: 2}
+      propertyPath: m_FontData.m_Alignment
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 224163279862000708, guid: f39714f198fa64dee9e3351c9ba365cb,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 8.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 224163279862000708, guid: f39714f198fa64dee9e3351c9ba365cb,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: -17.66
+      objectReference: {fileID: 0}
+    - target: {fileID: 114908625078462740, guid: f39714f198fa64dee9e3351c9ba365cb,
+        type: 2}
+      propertyPath: m_FontData.m_Alignment
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224195340512378800, guid: f39714f198fa64dee9e3351c9ba365cb,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -6.785
+      objectReference: {fileID: 0}
+    - target: {fileID: 224195340512378800, guid: f39714f198fa64dee9e3351c9ba365cb,
+        type: 2}
+      propertyPath: m_SizeDelta.x
+      value: -13.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 114680659998681030, guid: f39714f198fa64dee9e3351c9ba365cb,
+        type: 2}
+      propertyPath: m_FontData.m_BestFit
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114680659998681030, guid: f39714f198fa64dee9e3351c9ba365cb,
+        type: 2}
+      propertyPath: m_FontData.m_AlignByGeometry
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f39714f198fa64dee9e3351c9ba365cb, type: 2}
   m_IsPrefabParent: 0
@@ -1268,9 +1308,9 @@ Transform:
   - {fileID: 1793683277}
   - {fileID: 472531681}
   - {fileID: 1855100110}
+  - {fileID: 2141962510}
   - {fileID: 349894956}
   - {fileID: 853778200}
-  - {fileID: 2141962510}
   - {fileID: 1445258495}
   - {fileID: 1283664696}
   m_Father: {fileID: 0}
@@ -1325,7 +1365,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1831081017}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2141962511
 MonoBehaviour:
