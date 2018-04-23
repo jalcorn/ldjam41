@@ -8,6 +8,11 @@ public class LevelManager : MonoBehaviour {
 
 	public String nextScene = "main";
 
+	public AudioClip winClip;
+	public AudioClip loseClip;
+
+	private AudioSource audioSource;
+
 	private Cooldown startingCooldown;
 	private Cooldown endingCooldown;
 
@@ -18,6 +23,8 @@ public class LevelManager : MonoBehaviour {
 	public LevelResult levelResult;
 
 	void Awake() {
+		audioSource = GetComponent<AudioSource>();
+
 		startingCooldown = new Cooldown(readyDurationMillis, false);
 		endingCooldown = new Cooldown(endingDurationMillis, false);
 		levelState = new LevelState();
@@ -59,5 +66,6 @@ public class LevelManager : MonoBehaviour {
 	public void EndLevel(bool victory = false) {
 		levelState.SetCurrentState(LevelState.State.Ending);
 		levelResult.SetCurrentResult(victory ? LevelResult.Result.Win : LevelResult.Result.Lose);
+		audioSource.PlayOneShot(victory?winClip:loseClip);
 	}
 }
