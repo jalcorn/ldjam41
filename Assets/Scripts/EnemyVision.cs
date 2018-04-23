@@ -11,7 +11,7 @@ public class EnemyVision : MonoBehaviour {
 
   bool targeted = false;
 
-  public delegate void PlayerSighted(Player player);
+  public delegate void PlayerSighted(GameObject player);
 
   PlayerSighted playerSightedHandler;
 
@@ -27,7 +27,7 @@ public class EnemyVision : MonoBehaviour {
 
   private void OnTriggerEnter2D(Collider2D collision) {
     if (collision.gameObject.CompareTag("Player")) {
-      playerSightedHandler(collision.gameObject.GetComponent<Player>());
+      playerSightedHandler(collision.gameObject);
       indicator.color = targetedColor;
       targeted = true;
     }

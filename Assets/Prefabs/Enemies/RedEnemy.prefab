@@ -54,10 +54,10 @@ GameObject:
   - component: {fileID: 4648018371122632}
   - component: {fileID: 50248608014848108}
   - component: {fileID: 70110965530601000}
-  - component: {fileID: 114165295292914116}
   - component: {fileID: 114961156075604862}
+  - component: {fileID: 114910970744903332}
   m_Layer: 9
-  m_Name: Enemy
+  m_Name: RedEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -302,18 +302,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 4648018371122632}
---- !u!114 &114165295292914116
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1544460831589124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6278ca81e286c4b7789f1127aa18ec53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxHealth: 100
 --- !u!114 &114440776047284834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -345,6 +333,18 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e778aab4846a7864e9a0cc63c559db4f, type: 3}
   - {fileID: 21300000, guid: fb7ae1822c052274687f80f775a4c5b7, type: 3}
   frameRate: 6
+--- !u!114 &114910970744903332
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1544460831589124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f1a989e4a2efc646a416eb6b633fefd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
 --- !u!114 &114961156075604862
 MonoBehaviour:
   m_ObjectHideFlags: 1

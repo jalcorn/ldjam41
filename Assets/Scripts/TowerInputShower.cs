@@ -45,7 +45,7 @@ public class TowerInputShower : MonoBehaviour {
         {
             ShowSpaceToCharge();
 
-            Player p = collision.gameObject.GetComponent<Player>();
+            PlayerInput p = collision.gameObject.GetComponent<PlayerInput>();
             if (p != null)
             {
                 p.setClosestTower(tower);
@@ -58,7 +58,7 @@ public class TowerInputShower : MonoBehaviour {
         {
             HideSpaceToCharge();
 
-            Player p = collision.gameObject.GetComponent<Player>();
+            PlayerInput p = collision.gameObject.GetComponent<PlayerInput>();
             if( p != null)
             {
                 p.eraseClosestTower(tower);

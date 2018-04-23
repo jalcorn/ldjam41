@@ -27,7 +27,7 @@ public class Projectile : MonoBehaviour {
 
 	private void OnTriggerEnter2D(Collider2D collision) {
 		if (collision.gameObject.tag == "Enemy") {
-			Character health = collision.gameObject.GetComponent<Character>();
+			EnemyHealth health = collision.gameObject.GetComponent<EnemyHealth>();
 			health.AdjustHitpoints(-damage);
 			target = null;
 			Destroy(gameObject);

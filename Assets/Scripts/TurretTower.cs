@@ -7,7 +7,7 @@ public class TurretTower : Tower {
 
 	internal override void Attack() {
 		if (charactersInRange.Count > 0) {
-			Character target = charactersInRange[0];
+			EnemyHealth target = charactersInRange[0];
 			GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
 			Projectile projectile = bullet.GetComponent<Projectile>();
 			projectile.SetTarget(target.transform);

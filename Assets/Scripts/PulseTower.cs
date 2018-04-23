@@ -8,7 +8,7 @@ public class PulseTower : Tower {
 
 	public int damagePerAttack = 1;
 
-	List<Character> currentCharacterInRange = new List<Character>();
+	List<EnemyHealth> currentCharacterInRange = new List<EnemyHealth>();
 
 	internal override void PowerOn() {
 		base.PowerOn();
@@ -24,7 +24,7 @@ public class PulseTower : Tower {
 		// Avoid concurrent modification exception
 		currentCharacterInRange.Clear();
 		currentCharacterInRange.AddRange(charactersInRange);
-		foreach (Character character in currentCharacterInRange) {
+		foreach (EnemyHealth character in currentCharacterInRange) {
 			character.AdjustHitpoints(-damagePerAttack);
 		}
 	}

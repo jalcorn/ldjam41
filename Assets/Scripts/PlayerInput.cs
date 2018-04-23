@@ -1,11 +1,8 @@
 using UnityEngine;
 
-public class Player : MonoBehaviour {
+public class PlayerInput : MonoBehaviour {
 	public float speed;
 	public PlayerAnimator playerAnimator;
-
-	private LevelManager levelManager;
-	private Character character;
 
 	private PlayerAnimator.playerMoveState lastInputState = PlayerAnimator.playerMoveState.standDown;
 
@@ -14,10 +11,6 @@ public class Player : MonoBehaviour {
 	private bool isCharging = false;
 
 	private void Start() {
-		levelManager = FindObjectOfType<LevelManager>();
-		character = GetComponent<Character>();
-
-		character.OnHealthChange += OnHealthChange;
 	}
 
 	void Update() {
@@ -124,13 +117,6 @@ public class Player : MonoBehaviour {
 		return Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D);
 	}
 
-	private void OnCollisionEnter2D(Collision2D collision) {
-		if (collision.gameObject.tag == "Enemy") {
-			Destroy(collision.gameObject);
-
-			character.AdjustHitpoints(-1);
-		}
-	}
 
 	public void setClosestTower(Tower t) {
 		closestTower = t;
@@ -143,10 +129,5 @@ public class Player : MonoBehaviour {
 		}
 		canCharge = false;
 	}
-
-	private void OnHealthChange(int prev, int next) {
-		if (next <= 0 && levelManager.levelState.Cur == LevelState.State.Playing) {
-			levelManager.EndLevel(false);
-		}
-	}
+    
 }

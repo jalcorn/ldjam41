@@ -17,7 +17,7 @@ public abstract class Tower : MonoBehaviour {
 	public TowerAnimation towerSprite;
 	public BatteryAnimator batterySprite;
 
-	internal List<Character> charactersInRange = new List<Character>();
+	internal List<EnemyHealth> charactersInRange = new List<EnemyHealth>();
 
 	// Use this for initialization
 	void Start() {
@@ -43,7 +43,14 @@ public abstract class Tower : MonoBehaviour {
 
 	private void TryAttack() {
 		if (powerLevel > minPowerLevel) {
-			Attack();
+
+            foreach (EnemyHealth character in charactersInRange) {
+                if( character == null ) {
+                    charactersInRange.Remove(character);
+                }
+            }
+
+            Attack();
 		}
 	}
 
@@ -62,15 +69,15 @@ public abstract class Tower : MonoBehaviour {
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision) {
-		Character character = collision.gameObject.GetComponent<Character>();
-		if (character != null && collision.gameObject.tag != "Player") {
+        EnemyHealth character = collision.gameObject.GetComponent<EnemyHealth>();
+		if (character != null) {
 			charactersInRange.Add(character);
 		}
 	}
 
 	private void OnTriggerExit2D(Collider2D collision) {
-		Character character = collision.gameObject.GetComponent<Character>();
-		if (character != null&& collision.gameObject.tag != "Player") {
+        EnemyHealth character = collision.gameObject.GetComponent<EnemyHealth>();
+		if (character != null) {
 			charactersInRange.Remove(character);
 		}
 	}

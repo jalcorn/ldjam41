@@ -22,6 +22,8 @@ GameObject:
   - component: {fileID: 50407351017429710}
   - component: {fileID: 114408359403366422}
   - component: {fileID: 70407027642687316}
+  - component: {fileID: 114331957870813350}
+  - component: {fileID: 114086413728667292}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -165,8 +167,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.9, y: 1.75}
+  m_Offset: {x: 0, y: -0.4}
+  m_Size: {x: 0.9, y: 1}
   m_Direction: 0
 --- !u!70 &70589678539361302
 CapsuleCollider2D:
@@ -183,6 +185,18 @@ CapsuleCollider2D:
   m_Offset: {x: -0.025, y: -0.75}
   m_Size: {x: 0.75, y: 0.2}
   m_Direction: 1
+--- !u!114 &114086413728667292
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1359439444408402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6278ca81e286c4b7789f1127aa18ec53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
 --- !u!114 &114157358859530868
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -225,6 +239,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 4669801672520822}
+--- !u!114 &114331957870813350
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1359439444408402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b3d28617311aca4aa2bac6cf0b21463, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
+  text: {fileID: 0}
 --- !u!114 &114408359403366422
 MonoBehaviour:
   m_ObjectHideFlags: 1
