@@ -70,6 +70,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4642696594214464}
   - component: {fileID: 58582617084029024}
+  - component: {fileID: 58841523014005644}
   - component: {fileID: 114853612455827932}
   m_Layer: 0
   m_Name: VisionTrigger
@@ -260,7 +261,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.9
+  m_Radius: 1.5
 --- !u!58 &58618086990555322
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -276,6 +277,21 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.05}
   serializedVersion: 2
   m_Radius: 0.3
+--- !u!58 &58841523014005644
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1663502739995944}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2
 --- !u!114 &114124996966802916
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -353,7 +369,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   neutralColor: {r: 0.3633218, g: 0.78544325, b: 0.8235294, a: 0.78431374}
-  targetedColor: {r: 1, g: 0.52205884, b: 0.52205884, a: 0.78431374}
+  almostDetectedColor: {r: 0.96673435, g: 1, b: 0.39705884, a: 0.78431374}
+  detectedColor: {r: 1, g: 0.52205884, b: 0.52205884, a: 0.78431374}
   indicator: {fileID: 212487996282290594}
 --- !u!114 &114967806207062668
 MonoBehaviour:

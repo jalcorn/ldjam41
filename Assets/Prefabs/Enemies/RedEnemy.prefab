@@ -89,6 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4881681083643736}
   - component: {fileID: 60351394940313564}
+  - component: {fileID: 60320900942540738}
   - component: {fileID: 114970242815992174}
   m_Layer: 0
   m_Name: VisionTrigger
@@ -246,6 +247,33 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!60 &60320900942540738
+PolygonCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1736335720372824}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.5, y: 2.5}
+    newSize: {x: 2.5, y: 2.5}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0, y: 0}
+      - {x: 1.5, y: 0.75}
+      - {x: 1.5, y: -0.75}
 --- !u!60 &60351394940313564
 PolygonCollider2D:
   m_ObjectHideFlags: 1
@@ -378,7 +406,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   neutralColor: {r: 0.3633218, g: 0.78544325, b: 0.8235294, a: 0.78431374}
-  targetedColor: {r: 1, g: 0.52205884, b: 0.52205884, a: 0.78431374}
+  almostDetectedColor: {r: 0.96673435, g: 1, b: 0.39705884, a: 0.78431374}
+  detectedColor: {r: 1, g: 0.52205884, b: 0.52205884, a: 0.78431374}
   indicator: {fileID: 212736888553729850}
 --- !u!212 &212151951612564758
 SpriteRenderer:
@@ -502,7 +531,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 338107ce6415bca4c81d6d5dacb85dd4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b30995928950a28429161a243e5cba36, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
