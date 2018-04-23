@@ -15,8 +15,10 @@ public class Projectile : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {		
-		rigidbody.velocity = (target.position - transform.position).normalized*Velocity;
+	void Update () {
+		if (target != null) {
+			rigidbody.velocity = (target.position - transform.position).normalized * Velocity;
+		}
 	}
 
 	public void SetTarget(Transform target) {
@@ -27,6 +29,7 @@ public class Projectile : MonoBehaviour {
 		if (collision.gameObject.tag == "Enemy") {
 			Character health = collision.gameObject.GetComponent<Character>();
 			health.AdjustHitpoints(-damage);
+			target = null;
 			Destroy(gameObject);
 		}
   }
