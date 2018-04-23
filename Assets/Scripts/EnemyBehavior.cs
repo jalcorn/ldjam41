@@ -5,6 +5,7 @@ public class EnemyBehavior : MonoBehaviour {
 	public MovementType movementType;
 	public float visionDistance = 2f;
 	public GameObject visionObject;
+	public ParticleSystem deathEffect;
 
 	[HideInInspector]
 	public Player sightedPlayer = null;
@@ -32,6 +33,9 @@ public class EnemyBehavior : MonoBehaviour {
 				movementLogic = new FollowPathMovement(gameObject, speed, pathing.GetPathPositions());
 				break;
 		}
+		if (deathEffect != null) {
+			deathEffect.Stop();
+		}
 	}
 
 	void Update() {
@@ -54,7 +58,10 @@ public class EnemyBehavior : MonoBehaviour {
 	}
 
 	private void OnHealthChange(int prev, int next) {
-		if (next <= 0) {
+		if (next <= 0) {			
+			if (deathEffect != null) {
+				deathEffect.Play();
+			}
 			Destroy(this.gameObject);
 		}
 	}
