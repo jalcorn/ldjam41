@@ -949,6 +949,36 @@ Prefab:
       propertyPath: m_FontData.m_AlignByGeometry
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114680659998681030, guid: f39714f198fa64dee9e3351c9ba365cb,
+        type: 2}
+      propertyPath: m_FontData.m_MinSize
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114680659998681030, guid: f39714f198fa64dee9e3351c9ba365cb,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 114106762248747430, guid: f39714f198fa64dee9e3351c9ba365cb,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 114106762248747430, guid: f39714f198fa64dee9e3351c9ba365cb,
+        type: 2}
+      propertyPath: m_FontData.m_MinSize
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114903490182350284, guid: f39714f198fa64dee9e3351c9ba365cb,
+        type: 2}
+      propertyPath: m_FontData.m_FontSize
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 114903490182350284, guid: f39714f198fa64dee9e3351c9ba365cb,
+        type: 2}
+      propertyPath: m_FontData.m_MinSize
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f39714f198fa64dee9e3351c9ba365cb, type: 2}
   m_IsPrefabParent: 0
