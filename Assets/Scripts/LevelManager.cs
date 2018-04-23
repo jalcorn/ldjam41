@@ -16,6 +16,8 @@ public class LevelManager : MonoBehaviour {
 	private Cooldown startingCooldown;
 	private Cooldown endingCooldown;
 
+	private bool victory = false;
+
 	[HideInInspector]
 	public LevelState levelState;
 
@@ -58,12 +60,13 @@ public class LevelManager : MonoBehaviour {
 				if (endingCooldown.IsReady()) levelState.SetCurrentState(LevelState.State.Ended);
 				break;
 			case LevelState.State.Ended:
-				SceneManager.LoadScene(nextScene);
+				SceneManager.LoadScene(victory ? nextScene : "main");
 				return;
 		}
 	}
 
 	public void EndLevel(bool victory = false) {
+		this.victory = victory;
 		levelState.SetCurrentState(LevelState.State.Ending);
 		levelResult.SetCurrentResult(victory ? LevelResult.Result.Win : LevelResult.Result.Lose);
 		audioSource.PlayOneShot(victory?winClip:loseClip);

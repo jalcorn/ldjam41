@@ -2010,7 +2010,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   readyDurationMillis: 2000
   endingDurationMillis: 3000
-  nextScene: main
+  nextScene: level3
   winClip: {fileID: 8300000, guid: a6e44f50192ef43eeb80f3384a1e3fd5, type: 3}
   loseClip: {fileID: 8300000, guid: 5044e22c6190547b281df6c320c97191, type: 3}
 --- !u!4 &2033525856
