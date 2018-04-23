@@ -43,11 +43,16 @@ public abstract class Tower : MonoBehaviour {
 
 	private void TryAttack() {
 		if (powerLevel > minPowerLevel) {
+            List<EnemyHealth> charactersToDelete = new List<EnemyHealth>();
 
             foreach (EnemyHealth character in charactersInRange) {
                 if( character == null ) {
-                    charactersInRange.Remove(character);
+                    charactersToDelete.Add(character);
                 }
+            }
+
+            foreach (EnemyHealth character in charactersToDelete) {
+                charactersInRange.Remove(character);
             }
 
             Attack();
