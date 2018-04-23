@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TurretTower : Tower {
 	public GameObject bulletPrefab;
@@ -10,7 +8,9 @@ public class TurretTower : Tower {
 			EnemyHealth target = charactersInRange[0];
 			GameObject bullet = Instantiate(bulletPrefab, transform.position, transform.rotation);
 			Projectile projectile = bullet.GetComponent<Projectile>();
-			projectile.SetTarget(target.transform);
+			if (target != null) {
+				projectile.SetTarget(target.transform);
+			}
 		}
 	}
 }

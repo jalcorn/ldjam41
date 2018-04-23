@@ -320,6 +320,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 50
+  deathEffect: {fileID: 1701452690504942, guid: a6ead6f6fcf2c4737a706fa5b5316465,
+    type: 2}
 --- !u!114 &114682095525608328
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -331,6 +333,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80a78be7b7f834c5481e2ee367382925, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trailEffect: {fileID: 1780778142911420, guid: b009433a1e6854a8cbcd0bf863aee91a,
+    type: 2}
   speed: 4
   movementType: 0
   visionDistance: 1

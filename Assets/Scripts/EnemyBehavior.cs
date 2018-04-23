@@ -1,15 +1,11 @@
 using UnityEngine;
 
-
-
 public class EnemyBehavior : MonoBehaviour {
-    
-
+	public GameObject trailEffect;
 
 	void Start() {
-
+		Instantiate(trailEffect, this.transform);
         InitPathing();
-
     }
 
 	void Update() {
@@ -18,9 +14,7 @@ public class EnemyBehavior : MonoBehaviour {
 		float angle = Mathf.Atan2(forwardVector.y, forwardVector.x) * Mathf.Rad2Deg;
 		Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
 		visionObject.transform.rotation = Quaternion.RotateTowards(visionObject.transform.rotation, q, Mathf.PI);
-        
     }
-
 
     //AI//
 
@@ -64,5 +58,4 @@ public class EnemyBehavior : MonoBehaviour {
 		SimplePath,
 		LookAroundPath
 	}
-
 }

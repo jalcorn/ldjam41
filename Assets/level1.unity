@@ -398,6 +398,11 @@ Prefab:
       propertyPath: m_Offset.y
       value: -0.4
       objectReference: {fileID: 0}
+    - target: {fileID: 212140058172661996, guid: 85b45583f25624c4bb2fecb2560bb4e5,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 85b45583f25624c4bb2fecb2560bb4e5, type: 2}
   m_IsPrefabParent: 0
@@ -917,7 +922,7 @@ Prefab:
     - target: {fileID: 224163279862000708, guid: f39714f198fa64dee9e3351c9ba365cb,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: 8.83
+      value: 8.830017
       objectReference: {fileID: 0}
     - target: {fileID: 224163279862000708, guid: f39714f198fa64dee9e3351c9ba365cb,
         type: 2}
@@ -932,7 +937,7 @@ Prefab:
     - target: {fileID: 224195340512378800, guid: f39714f198fa64dee9e3351c9ba365cb,
         type: 2}
       propertyPath: m_AnchoredPosition.x
-      value: -6.785
+      value: -6.784973
       objectReference: {fileID: 0}
     - target: {fileID: 224195340512378800, guid: f39714f198fa64dee9e3351c9ba365cb,
         type: 2}
@@ -1409,7 +1414,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa9870bd790a04b13a152070426e33d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  redEnemyPrefab: {fileID: 1544460831589124, guid: b2cc106b46db04016b9a54bcd9fc0ff9,
+  redEnemyPrefab: {fileID: 1544460831589124, guid: 2ef8c0573b333489badec075df2188fe,
     type: 2}
   blueEnemyPrefab: {fileID: 1949648020836182, guid: a59908c907b9048c58afe37533aab502,
     type: 2}
@@ -1441,7 +1446,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: fcd52f60aeb0146b6864e1440525f7e7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
