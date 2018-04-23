@@ -42,21 +42,21 @@ public class PlayerInput : MonoBehaviour {
 			}
 
 			if (lastInputState == PlayerAnimator.playerMoveState.walkUp && isUpPressed()) {
-				moveUp();
+				playerAnimator.state = PlayerAnimator.playerMoveState.walkUp;
 			} else if (lastInputState == PlayerAnimator.playerMoveState.walkDown && isDownPressed()) {
-				moveDown();
+				playerAnimator.state = PlayerAnimator.playerMoveState.walkDown;
 			} else if (lastInputState == PlayerAnimator.playerMoveState.walkLeft && isLeftPressed()) {
-				moveLeft();
+				playerAnimator.state = PlayerAnimator.playerMoveState.walkLeft;
 			} else if (lastInputState == PlayerAnimator.playerMoveState.walkRight && isRightPressed()) {
-				moveRight();
+				playerAnimator.state = PlayerAnimator.playerMoveState.walkRight;
 			} else if (isUpPressed()) {
-				moveUp();
+				playerAnimator.state = PlayerAnimator.playerMoveState.walkUp;
 			} else if (isDownPressed()) {
-				moveDown();
+				playerAnimator.state = PlayerAnimator.playerMoveState.walkDown;
 			} else if (isLeftPressed()) {
-				moveLeft();
+				playerAnimator.state = PlayerAnimator.playerMoveState.walkLeft;
 			} else if (isRightPressed()) {
-				moveRight();
+				playerAnimator.state = PlayerAnimator.playerMoveState.walkRight;
 			} else {
 				if (playerAnimator.state < PlayerAnimator.playerMoveState.standUp) {
 					//Didn't move but is in walking animation
@@ -71,33 +71,44 @@ public class PlayerInput : MonoBehaviour {
 		if (isCharging && closestTower != null) {
 			closestTower.GetCharged();
 		}
+
+		switch (playerAnimator.state) {
+			case PlayerAnimator.playerMoveState.walkUp:
+				moveUp();
+				break;
+			case PlayerAnimator.playerMoveState.walkDown:
+				moveDown();
+				break;
+			case PlayerAnimator.playerMoveState.walkLeft:
+				moveLeft();
+				break;
+			case PlayerAnimator.playerMoveState.walkRight:
+				moveRight();
+				break;
+		}
 	}
 
 	private void moveUp() {
 		Vector3 position = this.transform.position;
 		position.y += speed;
-		playerAnimator.state = PlayerAnimator.playerMoveState.walkUp;
 		this.transform.position = position;
 	}
 
 	private void moveDown() {
 		Vector3 position = this.transform.position;
 		position.y -= speed;
-		playerAnimator.state = PlayerAnimator.playerMoveState.walkDown;
 		this.transform.position = position;
 	}
 
 	private void moveLeft() {
 		Vector3 position = this.transform.position;
 		position.x -= speed;
-		playerAnimator.state = PlayerAnimator.playerMoveState.walkLeft;
 		this.transform.position = position;
 	}
 
 	private void moveRight() {
 		Vector3 position = this.transform.position;
 		position.x += speed;
-		playerAnimator.state = PlayerAnimator.playerMoveState.walkRight;
 		this.transform.position = position;
 	}
 
@@ -129,5 +140,4 @@ public class PlayerInput : MonoBehaviour {
 		}
 		canCharge = false;
 	}
-    
 }
