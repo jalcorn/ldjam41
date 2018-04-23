@@ -1871,8 +1871,12 @@ MonoBehaviour:
     - delay: 2000
       type: 1
   - spawns:
-    - delay: 1000
+    - delay: 3000
       type: 2
+    - delay: 1500
+      type: 1
+    - delay: 1500
+      type: 1
   clip: {fileID: 8300000, guid: f27a5cde21e3a7f4494ef9a26f7effce, type: 3}
 --- !u!82 &2141962513
 AudioSource:
