@@ -358,6 +358,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 114331957870813350, guid: 85b45583f25624c4bb2fecb2560bb4e5,
+        type: 2}
+      propertyPath: maxHealth
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 85b45583f25624c4bb2fecb2560bb4e5, type: 2}
   m_IsPrefabParent: 0
@@ -1516,7 +1521,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   readyDurationMillis: 2000
   endingDurationMillis: 3000
-  nextScene: main
+  nextScene: win
   winClip: {fileID: 8300000, guid: a6e44f50192ef43eeb80f3384a1e3fd5, type: 3}
   loseClip: {fileID: 8300000, guid: 5044e22c6190547b281df6c320c97191, type: 3}
 --- !u!82 &1831081019
@@ -1804,24 +1809,24 @@ MonoBehaviour:
   - spawns:
     - delay: 1000
       type: 0
-    - delay: 200
+    - delay: 500
       type: 2
-    - delay: 200
+    - delay: 500
       type: 0
-    - delay: 200
+    - delay: 500
       type: 2
   - spawns:
     - delay: 1000
       type: 2
-    - delay: 400
+    - delay: 600
       type: 2
-    - delay: 400
+    - delay: 600
       type: 2
     - delay: 1000
       type: 0
     - delay: 200
       type: 1
-    - delay: 100
+    - delay: 200
       type: 1
   clip: {fileID: 8300000, guid: f27a5cde21e3a7f4494ef9a26f7effce, type: 3}
 --- !u!82 &2141962513
