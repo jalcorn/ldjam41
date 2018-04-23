@@ -18,7 +18,7 @@ public class EnemyBehavior : MonoBehaviour {
 
 	void Start() {
 		pathing = FindObjectOfType<Pathing>();
-		character = FindObjectOfType<Character>();
+		character = GetComponent<Character>();
 		character.OnHealthChange += OnHealthChange;
 
 		visionObject.transform.localScale = new Vector3(visionDistance, visionDistance);

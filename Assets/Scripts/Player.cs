@@ -15,7 +15,7 @@ public class Player : MonoBehaviour {
 
 	private void Start() {
 		levelManager = FindObjectOfType<LevelManager>();
-		character = FindObjectOfType<Character>();
+		character = GetComponent<Character>();
 
 		character.OnHealthChange += OnHealthChange;
 	}
