@@ -1763,14 +1763,66 @@ MonoBehaviour:
   waves:
   - spawns:
     - delay: 0
-      type: 2
-    - delay: 4000
       type: 0
-    - delay: 2000
+    - delay: 1000
+      type: 0
+    - delay: 1000
+      type: 0
+  - spawns:
+    - delay: 1000
+      type: 0
+    - delay: 500
+      type: 1
+    - delay: 500
+      type: 1
+    - delay: 10
+      type: 2
+    - delay: 500
+      type: 1
+    - delay: 1000
+      type: 0
+    - delay: 10
       type: 1
   - spawns:
     - delay: 1000
+      type: 0
+    - delay: 1000
+      type: 0
+    - delay: 1000
+      type: 0
+  - spawns:
+    - delay: 1000
       type: 2
+    - delay: 200
+      type: 1
+    - delay: 200
+      type: 1
+    - delay: 200
+      type: 1
+    - delay: 200
+      type: 1
+  - spawns:
+    - delay: 1000
+      type: 0
+    - delay: 200
+      type: 2
+    - delay: 200
+      type: 0
+    - delay: 200
+      type: 2
+  - spawns:
+    - delay: 1000
+      type: 2
+    - delay: 400
+      type: 2
+    - delay: 400
+      type: 2
+    - delay: 1000
+      type: 0
+    - delay: 200
+      type: 1
+    - delay: 100
+      type: 1
   clip: {fileID: 8300000, guid: f27a5cde21e3a7f4494ef9a26f7effce, type: 3}
 --- !u!82 &2141962513
 AudioSource:
