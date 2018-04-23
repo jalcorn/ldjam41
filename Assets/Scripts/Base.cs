@@ -13,6 +13,7 @@ public class Base : MonoBehaviour {
 		if (col.gameObject.tag == "Enemy") {
 			Destroy(col.gameObject);
             player.AdjustHitpoints(-1);
-		}
+            GetComponent<PlayerInput>().recoilFromHit(.5f);
+        }
 	}
 }

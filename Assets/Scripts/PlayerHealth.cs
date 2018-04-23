@@ -29,8 +29,14 @@ public class PlayerHealth : MonoBehaviour {
 		shake.Shake();
 
         health += delta;
+        
+
         if (health <= 0 && levelManager.levelState.Cur == LevelState.State.Playing) {
             levelManager.EndLevel(false);
+            GetComponent<PlayerInput>().recoilFromHit(4f);
+        }
+        else if (delta < 0) {
+            GetComponent<PlayerInput>().recoilFromHit(.5f);
         }
         text.SetHealthText(health);
     }

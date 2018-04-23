@@ -10,11 +10,17 @@ public class PlayerInput : MonoBehaviour {
 	private bool canCharge = false;
 	private bool isCharging = false;
 
+    private bool isRecoiling = false;
+
 	private void Start() {
 	}
 
 	void Update() {
-		if (canCharge && Input.GetKey(KeyCode.Space)) {
+
+        if (isRecoiling) {
+            lastInputState = PlayerAnimator.playerMoveState.death;
+            playerAnimator.state = PlayerAnimator.playerMoveState.death;
+        } else if (canCharge && Input.GetKey(KeyCode.Space)) {
 			if ( closestTower.transform.position.x < this.transform.position.x) {
 				lastInputState = PlayerAnimator.playerMoveState.fixLeft;
 				playerAnimator.state = PlayerAnimator.playerMoveState.fixLeft;
@@ -140,4 +146,15 @@ public class PlayerInput : MonoBehaviour {
 		}
 		canCharge = false;
 	}
+
+    public void recoilFromHit( float time ) {
+        isRecoiling = true;
+        Invoke("StopRecoiling", time);
+    }
+
+    private void StopRecoiling() {
+        isRecoiling = false;
+        lastInputState = PlayerAnimator.playerMoveState.standDown;
+        playerAnimator.state = PlayerAnimator.playerMoveState.standDown;
+    }
 }
