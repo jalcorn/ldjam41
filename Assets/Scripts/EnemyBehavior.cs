@@ -5,8 +5,8 @@ public class EnemyBehavior : MonoBehaviour {
 
 	void Start() {
 		Instantiate(trailEffect, this.transform);
-        InitPathing();
-    }
+		InitPathing();
+	}
 
 	void Update() {
 		movementLogic.Move();
@@ -14,39 +14,39 @@ public class EnemyBehavior : MonoBehaviour {
 		float angle = Mathf.Atan2(forwardVector.y, forwardVector.x) * Mathf.Rad2Deg;
 		Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
 		visionObject.transform.rotation = Quaternion.RotateTowards(visionObject.transform.rotation, q, Mathf.PI);
-    }
+	}
 
-    //AI//
+	//AI//
 
-    public float speed;
-    public MovementType movementType;
-    public float visionDistance = 2f;
-    public GameObject visionObject;
+	public float speed;
+	public MovementType movementType;
+	public float visionDistance = 2f;
+	public GameObject visionObject;
 
-    [HideInInspector]
-    public GameObject sightedPlayer = null;
+	[HideInInspector]
+	public GameObject sightedPlayer = null;
 
-    [HideInInspector]
-    public Pathing pathing;
+	[HideInInspector]
+	public Pathing pathing;
 
-    private EnemyVision vision;
-    private FollowPathMovement movementLogic;
+	private EnemyVision vision;
+	private FollowPathMovement movementLogic;
 
-    void InitPathing() {
-        pathing = FindObjectOfType<Pathing>();
+	void InitPathing() {
+		pathing = FindObjectOfType<Pathing>();
 
-        visionObject.transform.localScale = new Vector3(visionDistance, visionDistance);
-        vision = visionObject.GetComponent<EnemyVision>();
-        vision.watchForPlayer(playerSighted);
-        switch (movementType) {
-            case MovementType.LookAroundPath:
-                movementLogic = new LookAroundMovement(gameObject, speed, pathing.GetPathPositions());
-                break;
-            case MovementType.SimplePath:
-                movementLogic = new FollowPathMovement(gameObject, speed, pathing.GetPathPositions());
-                break;
-        }
-    }
+		visionObject.transform.localScale *= visionDistance;
+		vision = visionObject.GetComponent<EnemyVision>();
+		vision.watchForPlayer(playerSighted);
+		switch (movementType) {
+			case MovementType.LookAroundPath:
+				movementLogic = new LookAroundMovement(gameObject, speed, pathing.GetPathPositions());
+				break;
+			case MovementType.SimplePath:
+				movementLogic = new FollowPathMovement(gameObject, speed, pathing.GetPathPositions());
+				break;
+		}
+	}
 
 	void playerSighted(GameObject player) {
 		if (sightedPlayer == null) {
@@ -54,7 +54,7 @@ public class EnemyBehavior : MonoBehaviour {
 		}
 	}
 
-    public enum MovementType {
+	public enum MovementType {
 		SimplePath,
 		LookAroundPath
 	}
