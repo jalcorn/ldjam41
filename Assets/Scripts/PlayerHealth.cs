@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour {
 	private Cooldown invincibilityCooldown;
 
 	private AudioSource audioSource;
+	private CameraShake shake;
 
     void Start() {
         health = maxHealth;
@@ -20,11 +21,13 @@ public class PlayerHealth : MonoBehaviour {
 		invincibilityCooldown = new Cooldown(200, true);
 
 		audioSource = GetComponent<AudioSource>();
+		shake = FindObjectOfType<CameraShake>();
     }
 
     public void AdjustHitpoints(int delta) {
 		audioSource.Play();
-
+		shake.Shake();
+		
         health += delta;
         if (health <= 0 && levelManager.levelState.Cur == LevelState.State.Playing) {
             levelManager.EndLevel(false);
