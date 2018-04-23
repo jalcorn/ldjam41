@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour {
     public int maxHealth = 3;
@@ -12,6 +10,7 @@ public class PlayerHealth : MonoBehaviour {
 
 	private AudioSource audioSource;
 	private CameraShake shake;
+	private SpriteRenderer spriteRenderer;
 
     void Start() {
         health = maxHealth;
@@ -20,6 +19,7 @@ public class PlayerHealth : MonoBehaviour {
 
 		invincibilityCooldown = new Cooldown(200, true);
 
+		spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 		audioSource = GetComponent<AudioSource>();
 		shake = FindObjectOfType<CameraShake>();
     }
@@ -29,8 +29,9 @@ public class PlayerHealth : MonoBehaviour {
 		shake.Shake();
 
         health += delta;
-        
 
+		float tint = 0.5f + 0.5f * ((float) health / maxHealth);
+		spriteRenderer.color = new Color(1f,tint,tint,1f);
         if (health <= 0 && levelManager.levelState.Cur == LevelState.State.Playing) {
             levelManager.EndLevel(false);
             GetComponent<PlayerInput>().recoilFromHit(4f);
