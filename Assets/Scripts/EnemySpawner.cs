@@ -6,16 +6,19 @@ public class EnemySpawner : MonoBehaviour {
 	public GameObject blueEnemyPrefab;
 	public GameObject yellowEnemyPrefab;
 	public List<Wave> waves;
+	public AudioClip clip;
 
 	private LevelManager levelManager;
 	private Pathing pathing;
 	private Cooldown spawnCooldown;
+	private AudioSource audioSource;
 	private int waveIndex = 0;
 	private int spawnIndex = 0;
 
 	void Start() {
 		levelManager = FindObjectOfType<LevelManager>();
 		pathing = FindObjectOfType<Pathing>();
+		audioSource = GetComponent<AudioSource>();
 	}
 
 	public void Spawn(EnemyType type) {
@@ -36,6 +39,9 @@ public class EnemySpawner : MonoBehaviour {
 		enemy.transform.position = this.transform.position;
 		EnemyBehavior em = enemy.GetComponent<EnemyBehavior>();
 		em.pathing = pathing;
+
+		float vol = Random.Range(.3f, 0.6f);
+		audioSource.PlayOneShot(clip, vol);
 	}
 
 	void Update() {

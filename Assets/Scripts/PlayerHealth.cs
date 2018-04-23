@@ -10,15 +10,21 @@ public class PlayerHealth : MonoBehaviour {
 
 	private Cooldown invincibilityCooldown;
 
+	private AudioSource audioSource;
+
     void Start() {
         health = maxHealth;
         text = FindObjectOfType<PlayerHealthText>();
         levelManager = FindObjectOfType<LevelManager>();
 
 		invincibilityCooldown = new Cooldown(200, true);
+
+		audioSource = GetComponent<AudioSource>();
     }
 
     public void AdjustHitpoints(int delta) {
+		audioSource.Play();
+
         health += delta;
         if (health <= 0 && levelManager.levelState.Cur == LevelState.State.Playing) {
             levelManager.EndLevel(false);
