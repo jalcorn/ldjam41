@@ -38,5 +38,6 @@ public class TowerPulseAnimator : MonoBehaviour
 
     public void TurnOn(bool on) {
         isOn = on;
+		this.gameObject.SetActive(on);
     }
 }

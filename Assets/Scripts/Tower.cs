@@ -17,6 +17,9 @@ public abstract class Tower : MonoBehaviour {
 	public TowerAnimation towerSprite;
 	public BatteryAnimator batterySprite;
 
+	public AudioClip chargingClip;
+	public AudioClip fullyChargedClip;
+
 	internal List<EnemyHealth> charactersInRange = new List<EnemyHealth>();
 
 	private bool shouldSoundOnChanged = false;
@@ -80,8 +83,9 @@ public abstract class Tower : MonoBehaviour {
 		powerLevel += Time.fixedDeltaTime * powerGainPerSec;
 		if (shouldSoundOnChanged && powerLevel >= maxPowerLevel * 0.98f) {
 			shouldSoundOnChanged = false;
-			audioSource.volume = Random.Range(0.5f, 1f);
-			audioSource.Play();
+			audioSource.PlayOneShot(fullyChargedClip, Random.Range(0.8f, 1f));
+		} else if (!audioSource.isPlaying) {
+			audioSource.PlayOneShot(chargingClip, Random.Range(0.5f, .8f));
 		}
 	}
 

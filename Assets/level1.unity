@@ -530,6 +530,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114641234323241300, guid: 4c698c0095ba7488b9a959e15c78f905,
+        type: 2}
+      propertyPath: chargingClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 83ad3ee02144a40539675880772796a0, type: 3}
+    - target: {fileID: 114641234323241300, guid: 4c698c0095ba7488b9a959e15c78f905,
+        type: 2}
+      propertyPath: fullyChargedClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 51932388b399ba541bb2d526980253db, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4c698c0095ba7488b9a959e15c78f905, type: 2}
   m_IsPrefabParent: 0
@@ -1561,6 +1571,16 @@ Prefab:
       propertyPath: secondsBetweenAttack
       value: 0.05
       objectReference: {fileID: 0}
+    - target: {fileID: 114952062406734322, guid: 541c65e7b61ef4e7da3ce4f17adfe2c9,
+        type: 2}
+      propertyPath: chargingClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 83ad3ee02144a40539675880772796a0, type: 3}
+    - target: {fileID: 114952062406734322, guid: 541c65e7b61ef4e7da3ce4f17adfe2c9,
+        type: 2}
+      propertyPath: fullyChargedClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 51932388b399ba541bb2d526980253db, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 541c65e7b61ef4e7da3ce4f17adfe2c9, type: 2}
   m_IsPrefabParent: 0
