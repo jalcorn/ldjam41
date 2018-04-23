@@ -27,7 +27,6 @@ public class EnemyBehavior : MonoBehaviour {
 		} else {
 			animator.state = EnemyAnimator.enemyMoveState.walkDown;
 		}
-
 	}
 
 	//AI//
