@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class Tower : MonoBehaviour {
+public abstract class Tower : MonoBehaviour {
 	//Attacks
 	public float delayToStart = 5.0f;
 	public float secondsBetweenAttack = 0.1f;
-	public int damagePerAttack = -1;
 	CircleCollider2D trigger;
 
 	//Powerlevel
@@ -16,16 +15,14 @@ public class Tower : MonoBehaviour {
 	float powerGainPerSec = 4f / 15f;
 
 	public TowerAnimation towerSprite;
-	public TowerPulseAnimator fieldSprite;
 	public BatteryAnimator batterySprite;
 
-	List<Character> charactersInRange = new List<Character>();
-	List<Character> currentCharacterInRange = new List<Character>();
+	internal List<Character> charactersInRange = new List<Character>();
 
 	// Use this for initialization
 	void Start() {
 		trigger = gameObject.GetComponent<CircleCollider2D>();
-		InvokeRepeating("Attack", delayToStart, secondsBetweenAttack);
+		InvokeRepeating("TryAttack", delayToStart, secondsBetweenAttack);
 	}
 
 	private void FixedUpdate() {
@@ -38,24 +35,27 @@ public class Tower : MonoBehaviour {
 		towerSprite.framerate = Mathf.FloorToInt(powerLevel * 4) + 3;
 
 		if (powerLevel > minPowerLevel) {
-			towerSprite.state = TowerAnimation.towerSpriteState.on;
-			fieldSprite.TurnOn(true);
+			PowerOn();
 		} else {
-			towerSprite.state = TowerAnimation.towerSpriteState.off;
-			fieldSprite.TurnOn(false);
+			PowerOff();
 		}
 	}
 
-	void Attack() {
+	private void TryAttack() {
 		if (powerLevel > minPowerLevel) {
-			// Avoid concurrent modification exception
-			currentCharacterInRange.Clear();
-			currentCharacterInRange.AddRange(charactersInRange);
-			foreach (Character character in currentCharacterInRange) {
-				character.AdjustHitpoints(damagePerAttack);
-			}
+			Attack();
 		}
 	}
+
+	internal virtual void PowerOn() {
+		towerSprite.state = TowerAnimation.towerSpriteState.on;
+	}
+
+	internal virtual void PowerOff() {
+		towerSprite.state = TowerAnimation.towerSpriteState.off;
+	}
+
+	internal abstract void Attack();
 
 	public void GetCharged() {
 		powerLevel += Time.fixedDeltaTime * powerGainPerSec;
