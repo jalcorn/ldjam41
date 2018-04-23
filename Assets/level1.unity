@@ -549,6 +549,30 @@ Prefab:
       propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114788165339357574, guid: 4c698c0095ba7488b9a959e15c78f905,
+        type: 2}
+      propertyPath: allSprites.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: d2aa5b5c8a9edc24680ba998d73a1957,
+        type: 3}
+    - target: {fileID: 114788165339357574, guid: 4c698c0095ba7488b9a959e15c78f905,
+        type: 2}
+      propertyPath: allSprites.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 9b5d28432f5922745836d211371b20fc,
+        type: 3}
+    - target: {fileID: 114788165339357574, guid: 4c698c0095ba7488b9a959e15c78f905,
+        type: 2}
+      propertyPath: allSprites.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: e161399e8d5665d40930b2b75c931700,
+        type: 3}
+    - target: {fileID: 212500113609291666, guid: 4c698c0095ba7488b9a959e15c78f905,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9b5d28432f5922745836d211371b20fc,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4c698c0095ba7488b9a959e15c78f905, type: 2}
   m_IsPrefabParent: 0
@@ -1637,7 +1661,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   readyDurationMillis: 2000
   endingDurationMillis: 3000
-  nextScene: main
+  nextScene: level2
   winClip: {fileID: 8300000, guid: a6e44f50192ef43eeb80f3384a1e3fd5, type: 3}
   loseClip: {fileID: 8300000, guid: 5044e22c6190547b281df6c320c97191, type: 3}
 --- !u!82 &1831081019
