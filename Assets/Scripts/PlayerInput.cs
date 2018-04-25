@@ -1,5 +1,9 @@
 using UnityEngine;
 
+#if MOBILE_INPUT
+using UnityStandardAssets.CrossPlatformInput;
+#endif
+
 public class PlayerInput : MonoBehaviour {
 	public float speed;
 	public PlayerAnimator playerAnimator;
@@ -10,18 +14,18 @@ public class PlayerInput : MonoBehaviour {
 	private bool canCharge = false;
 	private bool isCharging = false;
 
-    private bool isRecoiling = false;
+	private bool isRecoiling = false;
 
 	private void Start() {
 	}
 
 	void Update() {
 
-        if (isRecoiling) {
-            lastInputState = PlayerAnimator.playerMoveState.death;
-            playerAnimator.state = PlayerAnimator.playerMoveState.death;
-        } else if (canCharge && Input.GetKey(KeyCode.Space)) {
-			if ( closestTower.transform.position.x < this.transform.position.x) {
+		if (isRecoiling) {
+			lastInputState = PlayerAnimator.playerMoveState.death;
+			playerAnimator.state = PlayerAnimator.playerMoveState.death;
+		} else if (canCharge && isChargePresssed()) {
+			if (closestTower.transform.position.x < this.transform.position.x) {
 				lastInputState = PlayerAnimator.playerMoveState.fixLeft;
 				playerAnimator.state = PlayerAnimator.playerMoveState.fixLeft;
 			} else {
@@ -37,7 +41,32 @@ public class PlayerInput : MonoBehaviour {
 
 			isCharging = false;
 			// Save last pressed key to prioritize the last pressed key
-			if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) {
+#if MOBILE_INPUT
+			lastInputState = playerAnimator.state;
+			float horizontal = CrossPlatformInputManager.GetAxis("Horizontal");
+			float vertical = CrossPlatformInputManager.GetAxis("Vertical");
+			if (Mathf.Abs(horizontal) >= float.Epsilon && Mathf.Abs(horizontal) > Mathf.Abs(vertical)) {
+				if(horizontal > float.Epsilon) {
+					//right
+					playerAnimator.state = PlayerAnimator.playerMoveState.walkRight;
+				} else if (horizontal <= float.Epsilon) {
+					//left
+					playerAnimator.state = PlayerAnimator.playerMoveState.walkLeft;
+				}
+			} else if (Mathf.Abs(vertical) >= float.Epsilon && Mathf.Abs(vertical) >= Mathf.Abs(horizontal)) {
+				if (vertical > float.Epsilon) {
+					//up
+					playerAnimator.state = PlayerAnimator.playerMoveState.walkUp;
+				} else if (vertical <= float.Epsilon) {
+					//down
+					playerAnimator.state = PlayerAnimator.playerMoveState.walkDown;
+				}
+			} else {
+				//none
+				playerAnimator.state = lastInputState.ToStanding();
+			}
+#else
+			if (Input.GetButtonDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W)) {
 				lastInputState = PlayerAnimator.playerMoveState.walkUp;
 			} else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.S)) {
 				lastInputState = PlayerAnimator.playerMoveState.walkDown;
@@ -69,7 +98,7 @@ public class PlayerInput : MonoBehaviour {
 					playerAnimator.state += 4;//Move to "standing" animation
 				}
 			}
-
+#endif
 		}
 	}
 
@@ -132,6 +161,16 @@ public class PlayerInput : MonoBehaviour {
 
 	private bool isRightPressed() {
 		return Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D);
+	}
+
+	private bool isChargePresssed() {
+#if MOBILE_INPUT
+		bool isPressed = CrossPlatformInputManager.GetButton("Jump");
+		Debug.Log("Charging Pressed - " + isPressed);
+		return isPressed;
+#else
+		return Input.GetButton("Jump");
+#endif
 	}
 
 
