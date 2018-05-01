@@ -4,20 +4,16 @@ using UnityEngine;
 
 public static class PlayerAnimatorExtensions {
 
-	public static PlayerAnimator.playerMoveState ToStanding(this PlayerAnimator.playerMoveState currentState) {
-		switch (currentState) {
-			case PlayerAnimator.playerMoveState.walkUp:
-				return PlayerAnimator.playerMoveState.standUp;
-			case PlayerAnimator.playerMoveState.walkDown:
-				return PlayerAnimator.playerMoveState.standDown;
-			case PlayerAnimator.playerMoveState.walkLeft:
-			case PlayerAnimator.playerMoveState.fixLeft:
-				return PlayerAnimator.playerMoveState.standLeft;
-			case PlayerAnimator.playerMoveState.walkRight:
-			case PlayerAnimator.playerMoveState.fixRight:
-				return PlayerAnimator.playerMoveState.standRight;
+	public static int AnimationIndex(this DirectionState currentState) {
+		switch(currentState) {				
+			case DirectionState.left:
+			case DirectionState.right:
+				return 1;
+			case DirectionState.up:
+				return 2;
+			case DirectionState.down:
 			default:
-				return currentState;
+				return 0;
 		}
 	}
 }

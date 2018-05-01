@@ -79,7 +79,7 @@ public abstract class Tower : MonoBehaviour {
 
 	internal abstract void Attack();
 
-	public void GetCharged() {
+	public void Charge() {
 		powerLevel += Time.fixedDeltaTime * powerGainPerSec;
 		if (shouldSoundOnChanged && powerLevel >= maxPowerLevel * 0.98f) {
 			shouldSoundOnChanged = false;
